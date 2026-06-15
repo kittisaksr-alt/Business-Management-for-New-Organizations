@@ -1,4 +1,4 @@
-html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
@@ -147,18 +147,18 @@ html<!DOCTYPE html>
             pointer-events: none;
         }
 
-        .slide-counter {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 0.9rem;
-            color: #8899aa;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
+        .two-col {
+            display: flex;
+            gap: 1.5rem;
         }
 
-        /* Table styling */
+        .two-col > div {
+            flex: 1;
+            background: rgba(21, 42, 74, 0.5);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
         .table-evolution {
             width: 100%;
             border-collapse: collapse;
@@ -185,7 +185,6 @@ html<!DOCTYPE html>
             background: rgba(255, 255, 255, 0.03);
         }
 
-        /* Diagrams */
         .diagram-flow {
             display: flex;
             align-items: center;
@@ -218,7 +217,6 @@ html<!DOCTYPE html>
             padding: 0.8rem 1.2rem;
             margin-bottom: 0.5rem;
             background: rgba(21, 42, 74, 0.7);
-            position: relative;
         }
 
         .dao-layer .layer-title {
@@ -239,18 +237,6 @@ html<!DOCTYPE html>
             margin: 0.2rem 0;
         }
 
-        .two-col {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .two-col > div {
-            flex: 1;
-            background: rgba(21, 42, 74, 0.5);
-            border-radius: 8px;
-            padding: 1rem;
-        }
-
         @media (max-width: 768px) {
             .slide {
                 padding: 1.5rem;
@@ -265,9 +251,7 @@ html<!DOCTYPE html>
     </style>
 </head>
 <body>
-    <div class="slide-container" id="slideContainer">
-        <!-- Slides injected via JS for cleanliness, but can also be hardcoded -->
-    </div>
+    <div class="slide-container" id="slideContainer"></div>
 
     <div class="nav-buttons">
         <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">◀ ก่อนหน้า</button>
@@ -276,206 +260,194 @@ html<!DOCTYPE html>
 
     <script>
         const slidesData = [
-            { // Slide 1
+            {
                 title: "กรอบการวิเคราะห์ 3 ชั้น และภาพรวมบท",
                 body: `
-                    <ul class="bullet-list">
-                        <li><span class="highlight">วัตถุประสงค์:</span> วิเคราะห์ วิพากษ์ และสังเคราะห์ทฤษฎีการบริหารยุคใหม่</li>
-                        <li><span class="highlight">กรอบวิเคราะห์ 3 ชั้น:</span> (1) พรรณนา (Descriptive), (2) วิพากษ์ (Critical), (3) สังเคราะห์ (Synthetic)</li>
-                        <li>วิวัฒนาการทฤษฎี = การเปลี่ยนกระบวนทัศน์ (Paradigm Shift — Kuhn, 1962) ไม่ใช่การสะสมแบบราบเรียบ</li>
-                        <li><span class="highlight">วัตถุประสงค์ 4 ข้อของบท:</span> ปูพื้นฐานทฤษฎี, สร้างเครื่องมือวิเคราะห์, เชื่อมโยงบริบทไทย/อาเซียน, เสนอกรอบ DAO</li>
-                    </ul>
-                    <div style="display:flex;justify-content:center;gap:2rem;margin-top:1rem;">
-                        <div style="background:#152a4a;padding:1rem 1.5rem;border-radius:8px;">🔍 พรรณนา</div>
-                        <div style="background:#1e3a5f;padding:1rem 1.5rem;border-radius:8px;">⚡ วิพากษ์</div>
-                        <div style="background:#2a4a6f;padding:1rem 1.5rem;border-radius:8px;">🧩 สังเคราะห์</div>
-                    </div>
+                    <p><span class="highlight">📌 ความสำคัญของบทนี้:</span> ทำความเข้าใจวิวัฒนาการทฤษฎีการจัดการอย่างเป็นระบบ เพื่อให้สามารถวิพากษ์ข้อจำกัดและสังเคราะห์เป็นเครื่องมือบริหารสมัยใหม่</p>
+                    <p><span class="highlight">🪜 กรอบวิเคราะห์ 3 ชั้น:</span> (1) <span style="color:#4fc3f7;">พรรณนา (Descriptive)</span> – รู้จักทฤษฎี (2) <span style="color:#f9a825;">วิพากษ์ (Critical)</span> – เห็นข้อจำกัด (3) <span style="color:#66bb6a;">สังเคราะห์ (Synthetic)</span> – บูรณาการสู่กรอบใหม่ (DAO Framework)</p>
+                    <p><span class="highlight">🎯 วัตถุประสงค์ 4 ข้อของบท:</span> ① ปูพื้นฐานทฤษฎีร่วมสมัย ② สร้างความสามารถในการวิพากษ์ ③ เชื่อมโยงบริบทไทย/อาเซียน ④ เสนอกรอบ DAO สำหรับการจัดการยุคใหม่</p>
+                    <p>✨ ทฤษฎีวิวัฒนาการผ่าน <span class="highlight">การเปลี่ยนกระบวนทัศน์ (Paradigm Shift — Kuhn, 1962)</span> ไม่ใช่แค่การสะสมความรู้ – กรอบ 3 ชั้นจะเผยให้เห็น <em>“สิ่งที่ทฤษฎีเก่ามองไม่เห็น”</em></p>
                 `
             },
-            { // Slide 2
+            {
                 title: "ยุคคลาสสิก: อุปมาองค์กรแบบ “เครื่องจักร” — Taylor",
                 body: `
-                    <p><span class="highlight">Scientific Management (Taylor, 1911)</span> — 3 ข้อสมมติ: One Best Way, Economic Man, ออกแบบงานเชิงวิทยาศาสตร์</p>
-                    <p><span class="highlight">คุณูปการ:</span> ผลิตภาพอุตสาหกรรม, ต้นแบบ Operations Management</p>
-                    <p><span class="highlight">ข้อวิพากษ์:</span> Drucker (1999) — ไม่เหมาะกับ Knowledge Work; Braverman (1974) — Deskilling, alienation; ละเลยมิติสังคม-จิตวิทยา</p>
-                    <p><span class="highlight">สังเคราะห์:</span> Lean Manufacturing (Womack et al., 1990) ปรับปรุง Taylorism ด้วยการมีส่วนร่วมของพนักงาน</p>
+                    <p><span class="highlight">📌 ความสำคัญ:</span> วางรากฐานการจัดการเชิงวิทยาศาสตร์ ศึกษาวิธีการเพิ่มผลิตภาพอย่างเป็นระบบ – ทุกองค์กรยังใช้หลักคิดนี้อยู่ในรูปแบบใดรูปแบบหนึ่ง</p>
+                    <p><span class="highlight">🎯 วัตถุประสงค์ของทฤษฎี:</span> ลดความสูญเปล่า กำหนด “วิธีที่ดีที่สุดเพียงหนึ่งเดียว” (One Best Way) บนสมมติฐานมนุษย์ถูกจูงใจด้วยเงิน (Economic Man)</p>
+                    <p><span class="highlight">🔎 ข้อวิพากษ์:</span> Drucker (1999) – ไม่เหมาะกับ Knowledge Work; Braverman (1974) – Deskilling & Alienation; ละเลยมิติสังคม-จิตวิทยา</p>
+                    <p><span class="highlight">🔗 เชื่อมโยง:</span> แนวคิดของ Taylor ถูกปรับปรุงโดย Lean Manufacturing (Womack et al., 1990) ซึ่งเพิ่มการมีส่วนร่วมของพนักงาน – วางฐานให้กับ <span class="highlight">ยุคมนุษยสัมพันธ์ (สไลด์ถัดไป)</span></p>
                 `
             },
-            { // Slide 3
+            {
                 title: "ยุคคลาสสิก: Fayol และ Weber — หน้าที่การจัดการและระบบราชการ",
                 body: `
-                    <div class="two-col">
-                        <div>
-                            <p><strong>Fayol:</strong> 5 หน้าที่ + 14 หลักการ</p>
-                            <p style="font-size:0.9rem;">ระเบียบ, การแบ่งงาน, สายบังคับบัญชา</p>
-                        </div>
-                        <div>
-                            <p><strong>Weber:</strong> ระบบราชการในอุดมคติ</p>
-                            <p style="font-size:0.9rem;">กฎ, ลำดับชั้น, อำนาจตามกฎหมาย</p>
-                        </div>
-                    </div>
-                    <p><span class="highlight">ข้อวิพากษ์:</span> Mintzberg (1973) — ผู้บริหารจริงตัดสินใจกระจัดกระจาย; DiMaggio & Powell (1983) — Isomorphic Pressure; Hannan & Freeman (1984) — Structural Inertia</p>
-                    <p>นัยสังเคราะห์: ยุคคลาสสิกให้ “ภาษา” การบริหาร แต่มองมนุษย์มิติเดียว (Economic Rationality) และองค์กรคือระบบปิด</p>
+                    <p><span class="highlight">📌 ความสำคัญ:</span> สร้าง “ภาษา” ทางการจัดการ (วางแผน จัดองค์กร สั่งการ ประสานงาน ควบคุม) และหลักการบริหารที่ใช้ได้ทั้งองค์กรภาครัฐและเอกชน</p>
+                    <p><span class="highlight">🎯 วัตถุประสงค์:</span> เพื่อความมีระเบียบ เป็นธรรม และคาดการณ์ได้ – Fayol (14 หลักการ), Weber (ระบบราชการอุดมคติ)</p>
+                    <p><span class="highlight">🔎 ข้อวิพากษ์:</span> Mintzberg (1973) – ผู้บริหารจริงตัดสินใจภายใต้ความกระจัดกระจาย ไม่เป็นระเบียบ; DiMaggio & Powell (1983) – Isomorphic Pressure บังคับให้องค์กรเลียนแบบกัน; Hannan & Freeman (1984) – Structural Inertia ทำให้ปรับตัวยาก</p>
+                    <p><span class="highlight">🔗 เชื่อมโยง:</span> แนวคิดระบบปิดถูกล้มล้างโดย <span class="highlight">ทฤษฎีระบบเปิด (สไลด์ 5)</span> ที่มององค์กรเชื่อมโยงกับสิ่งแวดล้อม</p>
                 `
             },
-            { // Slide 4
+            {
                 title: "ยุคมนุษยสัมพันธ์: อุปมาองค์กรแบบ “สิ่งมีชีวิต”",
                 body: `
-                    <p>Mayo — Hawthorne Studies: ปัจจัยสังคมสำคัญกว่าปัจจัยกายภาพ</p>
-                    <p>Maslow (1943) ลำดับขั้นความต้องการ, McGregor (1960) Theory X/Y, Herzberg (1959) ทฤษฎีสองปัจจัย</p>
-                    <p><span class="highlight">ข้อวิพากษ์:</span> Levitt & List (2011) — Hawthorne effect เล็กกว่าที่รายงาน; Hofstede (1984) — Maslow ยึดตะวันตก, เอเชียเน้นกลุ่ม; Pinder (2008) — หลักฐานน้อยสำหรับลำดับตายตัว</p>
-                    <p>นัยสังเคราะห์: เปิดมุมมอง “ระบบสังคม” แต่ยังเชื่อ Universalist Assumption</p>
+                    <p><span class="highlight">📌 ความสำคัญ:</span> เปิดมิติ “มนุษย์” ที่ทฤษฎีคลาสสิกละเลย – องค์กรไม่ใช่เครื่องจักร แต่คือสิ่งมีชีวิตที่ต้องการแรงจูงใจและความสัมพันธ์ทางสังคม</p>
+                    <p><span class="highlight">🎯 วัตถุประสงค์:</span> เพิ่มผลิตภาพผ่านความพึงพอใจของคนงาน – Hawthorne Studies (Mayo), Maslow (1943), McGregor (1960) Theory X/Y, Herzberg (1959)</p>
+                    <p><span class="highlight">🔎 ข้อวิพากษ์:</span> Hofstede (1984) – Maslow เป็น Western-centric, เอเชียเน้น Belongingness มากกว่า Esteem; Pinder (2008) – ขาดหลักฐานลำดับขั้นคงที่</p>
+                    <p><span class="highlight">🔗 เชื่อมโยง:</span> แนวคิดที่ว่ามนุษย์มีแรงจูงใจหลากหลาย ปูทางสู่ <span class="highlight">องค์กรแห่งการเรียนรู้ (สไลด์ 7)</span> และการออกแบบงานที่ให้ความหมาย</p>
                 `
             },
-            { // Slide 5
+            {
                 title: "ยุคการจัดการสมัยใหม่: ทฤษฎีระบบและสถานการณ์ (Contingency)",
                 body: `
-                    <p>Katz & Kahn (1966) — <span class="highlight">Open Systems Theory</span>: องค์กรแลกเปลี่ยนทรัพยากรกับสิ่งแวดล้อม</p>
-                    <p>Burns & Stalker (1961) + Lawrence & Lorsch (1967) — <span class="highlight">Contingency Theory</span>: ไม่มี One Best Way, โครงสร้างขึ้นอยู่กับสิ่งแวดล้อม</p>
+                    <p><span class="highlight">📌 ความสำคัญ:</span> ปฏิเสธ “One Best Way” แบบคลาสสิก – โครงสร้างองค์กรต้องสอดคล้องกับสภาพแวดล้อม (Fit)</p>
+                    <p><span class="highlight">🎯 วัตถุประสงค์:</span> อธิบายว่าทำไมองค์กรในสภาพแวดล้อมต่างกันจึงมีโครงสร้างต่างกัน (Lawrence & Lorsch, 1967)</p>
                     <div class="diagram-flow">
-                        <div class="flow-box">สิ่งแวดล้อม<br>(Environment)</div>
+                        <div class="flow-box">🌍 สิ่งแวดล้อม</div>
                         <span class="flow-arrow">→</span>
-                        <div class="flow-box">โครงสร้างองค์กร<br>(Structure)</div>
+                        <div class="flow-box">🏛️ โครงสร้างองค์กร</div>
                         <span class="flow-arrow">→</span>
-                        <div class="flow-box">ผลการดำเนินงาน<br>(Performance)</div>
+                        <div class="flow-box">📈 ประสิทธิผล</div>
                     </div>
-                    <p style="text-align:center">แนวคิดหลัก: <span class="highlight">“ความสอดคล้อง (Fit)”</span> ระหว่างองค์กรกับสิ่งแวดล้อม</p>
+                    <p><span class="highlight">🔗 เชื่อมโยง:</span> แนวคิดนี้ต่อยอดเป็น <span class="highlight">RBV และ Dynamic Capabilities (สไลด์ถัดไป)</span> ที่ศึกษาทรัพยากรภายในควบคู่กับสภาพแวดล้อม</p>
                 `
             },
-            { // Slide 6
+            {
                 title: "มุมมองฐานทรัพยากร (RBV) และความสามารถพลวัต (Dynamic Capabilities)",
                 body: `
-                    <p><span class="highlight">RBV (Barney, 1991):</span> VRIN resources → sustainable competitive advantage</p>
-                    <p><span class="highlight">Dynamic Capabilities (Teece et al., 1997):</span> Sense → Seize → Transform</p>
-                    <p>ข้อวิพากษ์: Priem & Butler (2001) — tautology; Eisenhardt & Martin (2000) — equifinality; Zollo & Winter (2002) — ต้องการการเรียนรู้อย่างจงใจ</p>
-                    <p><span class="highlight">ข้อแตกต่างสำคัญ:</span> RBV สะสมและปกป้อง; Dynamic Capabilities ปรับเปลี่ยนอย่างต่อเนื่อง</p>
+                    <p><span class="highlight">📌 ความสำคัญ:</span> อธิบายว่าความได้เปรียบแข่งขันไม่ได้มาจากอุตสาหกรรมเท่านั้น แต่มาจากทรัพยากรภายในที่เลียนแบบยาก (VRIN – Barney, 1991)</p>
+                    <p><span class="highlight">🎯 วัตถุประสงค์:</span> RBV = สะสมและปกป้องทรัพยากร; Dynamic Capabilities (Teece et al., 1997) = ปรับเปลี่ยนทรัพยากรอย่างต่อเนื่อง (Sense → Seize → Transform)</p>
+                    <p><span class="highlight">🔎 ข้อวิพากษ์:</span> Priem & Butler (2001) – ข้อโต้แย้งของ RBV อาจเป็น tautology; Eisenhardt & Martin (2000) – Dynamic Capabilities มี equifinality</p>
+                    <p><span class="highlight">🔗 เชื่อมโยง:</span> Dynamic Capabilities เป็นรากฐานของ <span class="highlight">DAO Framework ชั้นที่ 2</span> และเชื่อมกับ <span class="highlight">การเรียนรู้ขององค์กร (สไลด์ถัดไป)</span></p>
                 `
             },
-            { // Slide 7
+            {
                 title: "องค์กรแห่งการเรียนรู้ (Learning Organization)",
                 body: `
-                    <p>Argyris & Schön (1978) — <span class="highlight">Single-Loop</span> (แก้ที่อาการ) vs <span class="highlight">Double-Loop Learning</span> (ตั้งคำถามตัวแปรควบคุม)</p>
-                    <p>Senge (1990) — 5 Disciplines, Systems Thinking เป็นตัวบูรณาการ</p>
-                    <p>Edmondson (1999) — <span class="highlight">Psychological Safety</span> คือปัจจัยอันดับ 1 ที่ทำให้ทีมเรียนรู้</p>
-                    <p>ข้อวิพากษ์: Weick & Westley (1996) — เชิงบรรทัดฐานเกินไป; Argyris (1991) — ผู้บริหารอาวุโสต่อต้าน Double-Loop มากที่สุด</p>
+                    <p><span class="highlight">📌 ความสำคัญ:</span> เปลี่ยนจากองค์กรที่ “ทำงาน” เป็นองค์กรที่ “เรียนรู้” – การเรียนรู้คือความสามารถในการปรับตัวที่แท้จริง</p>
+                    <p><span class="highlight">🎯 วัตถุประสงค์:</span> แก้ปัญหาเชิงระบบผ่าน <span class="highlight">Double-Loop Learning</span> (Argyris & Schön, 1978) ที่ตั้งคำถามกับสมมติฐานพื้นฐาน ไม่ใช่แค่แก้ที่อาการ</p>
+                    <p>Senge (1990) เสนอ <span class="highlight">5 Disciplines</span> โดยมี Systems Thinking เป็นแกนกลาง – Edmondson (1999) พบว่า Psychological Safety คือปัจจัยสำคัญที่สุด</p>
+                    <p><span class="highlight">🔗 เชื่อมโยง:</span> การเรียนรู้ระดับองค์กรคือกลไกของ <span class="highlight">Ambidexterity (สไลด์ 8)</span> และเป็นส่วนหนึ่งของ <span class="highlight">DAO ชั้นที่ 3</span></p>
                 `
             },
-            { // Slide 8
+            {
                 title: "ยุคร่วมสมัย: ความซับซ้อนและการปรับตัว",
                 body: `
-                    <p>March (1991) — ความตึงเครียดระหว่าง <span class="highlight">Exploration</span> กับ <span class="highlight">Exploitation</span></p>
-                    <p>Tushman & O'Reilly (1996) — <span class="highlight">Ambidextrous Organization</span></p>
-                    <p>Christensen (1997) — <span class="highlight">Innovator's Dilemma</span>: บริษัทยิ่งใหญ่ล้มเหลวเพราะรับใช้ลูกค้าปัจจุบันมากเกินไป</p>
-                    <p>Kane et al. (2019) — Digital Maturity = กลยุทธ์ + วัฒนธรรม + คน (ไม่ใช่แค่เทคโนโลยี)</p>
-                    <p>นัยสังเคราะห์: ความซับซ้อน “แก้” ไม่ได้ ต้อง “จัดการ” ผ่านสมดุล Exploitation/Exploration</p>
+                    <p><span class="highlight">📌 ความสำคัญ:</span> สภาพแวดล้อมเปลี่ยนเร็ว องค์กรต้องทำสองสิ่งที่ขัดแย้งกันไปพร้อมกัน – ใช้ประโยชน์จากสิ่งเดิม (Exploitation) และสำรวจสิ่งใหม่ (Exploration) – March (1991)</p>
+                    <p><span class="highlight">🎯 วัตถุประสงค์:</span> สร้าง <span class="highlight">Ambidextrous Organization</span> (Tushman & O'Reilly, 1996) ที่ไม่ล้มเหลวเพราะความสำเร็จเดิม (Innovator's Dilemma — Christensen, 1997)</p>
+                    <p>Digital Maturity (Kane et al., 2019) ขึ้นอยู่กับ Strategy+Culture+People > Technology</p>
+                    <p><span class="highlight">🔗 เชื่อมโยง:</span> โลกที่ซับซ้อนทำให้เราต้องการกรอบวินิจฉัยต่างๆ เช่น <span class="highlight">VUCA/BANI (สไลด์ 9)</span> และ <span class="highlight">Industry 4.0 (สไลด์ 10)</span></p>
                 `
             },
-            { // Slide 9
+            {
                 title: "จาก VUCA สู่ BANI: กรอบวินิจฉัยสภาพแวดล้อม",
                 body: `
-                    <p><span class="highlight">VUCA</span> (Johansen 2009, Bennett & Lemoine 2014): Volatility, Uncertainty, Complexity, Ambiguity</p>
-                    <p><span class="highlight">BANI</span> (Cascio, 2020): Brittle, Anxious, Nonlinear, Incomprehensible — ต่างเชิงคุณภาพจาก VUCA</p>
-                    <p>ข้อวิพากษ์: (1) ทั้งคู่เป็นเพียงเชิงพรรณนา; (2) อาจก่อให้เกิด Organizational Anxiety; (3) Cynefin Framework (Snowden & Boone, 2007) ให้แนวทางปฏิบัติชัดเจนกว่า</p>
-                    <p>นัยสังเคราะห์: ใช้ VUCA/BANI เป็น<span class="highlight">เลนส์วินิจฉัย</span> + Cynefin/Dynamic Capabilities เป็น<span class="highlight">กรอบกำหนดแนวทาง</span></p>
+                    <p><span class="highlight">📌 ความสำคัญ:</span> ก่อนที่จะจัดการ ต้องเข้าใจธรรมชาติของสภาพแวดล้อมก่อน – VUCA และ BANI เป็นเลนส์ที่ช่วยวินิจฉัย ไม่ใช่เครื่องมือแก้ปัญหา</p>
+                    <p><span class="highlight">🎯 วัตถุประสงค์:</span> จำแนกประเภทของความไม่แน่นอน – VUCA (Volatility, Uncertainty, Complexity, Ambiguity) → BANI (Brittle, Anxious, Nonlinear, Incomprehensible) ของ Cascio (2020)</p>
+                    <p><span class="highlight">🔎 ข้อวิพากษ์:</span> ทั้งคู่เป็นเพียงเชิงพรรณนา อาจก่อให้เกิดความวิตกกังวลเชิงองค์กร; ควรใช้ร่วมกับ <span class="highlight">Cynefin Framework</span> (Snowden & Boone, 2007) ที่ชี้แนะแนวทางปฏิบัติ</p>
+                    <p><span class="highlight">🔗 เชื่อมโยง:</span> การวินิจฉัยสภาพแวดล้อมคือ <span class="highlight">ชั้นที่ 1 ของ DAO Framework</span> และเชื่อมกับการตัดสินใจลงทุนเทคโนโลยียุค 4.0</p>
                 `
             },
-            { // Slide 10
+            {
                 title: "อุตสาหกรรม 4.0: ความจริงหรือกระแส?",
                 body: `
-                    <p>Schwab (2016) — IR4.0 หลอมรวมโลกกายภาพ ดิจิทัล และชีวภาพ</p>
-                    <p><span class="highlight">Gordon (2016) โต้แย้ง</span> — นวัตกรรมดิจิทัลสร้างผลิตภาพเพิ่มน้อยกว่า IR2 (ไฟฟ้า, เครื่องยนต์, สุขาภิบาล)</p>
-                    <p>นัยสำคัญ: อย่าลงทุนใน “เทคโนโลยีล่าสุด” โดยไม่มีกลยุทธ์ชัดเจน</p>
-                    <p>Kane et al. (2019) — ความสำเร็จดิจิทัลทรานส์ฟอร์เมชัน = วัฒนธรรมเรียนรู้ ไม่ใช่เทคโนโลยีมากที่สุด</p>
+                    <p><span class="highlight">📌 ความสำคัญ:</span> เทคโนโลยีดิจิทัลไม่ได้แปลว่าผลิตภาพจะเพิ่มขึ้นเสมอ – ต้องวิพากษ์ระหว่างความตื่นเต้นกับหลักฐานเชิงประจักษ์</p>
+                    <p><span class="highlight">🎯 วัตถุประสงค์:</span> แยกแยะระหว่างโอกาสจริงกับ Hype – Schwab (2016) vs. Gordon (2016) ชี้ว่า IR2 ยังสร้าง Productivity มากกว่า</p>
+                    <p>บทเรียนสำหรับผู้บริหาร: <span class="highlight">กลยุทธ์มาก่อนเทคโนโลยี</span> (Kane et al., 2019) – การลงทุนที่ผิดเวลา/ทิศทางทำให้ล้มเหลวแม้ทุ่มงบ (Christensen, 1997)</p>
+                    <p><span class="highlight">🔗 เชื่อมโยง:</span> ความไม่แน่นอนของยุค 4.0 เป็นแรงผลักดันให้เราสังเคราะห์กรอบ <span class="highlight">DAO Framework (สไลด์ 11-13)</span></p>
                 `
             },
-            { // Slide 11
+            {
                 title: "4 รูปแบบวิวัฒนาการ: จากยุคคลาสสิกสู่ร่วมสมัย (ตาราง 1.1)",
                 body: `
+                    <p><span class="highlight">📌 ความสำคัญ:</span> การระบุรูปแบบวิวัฒนาการช่วยให้เราเห็น “กระแสความคิด” ที่เปลี่ยนแปลง และเป็นฐานในการสังเคราะห์กรอบใหม่</p>
                     <table class="table-evolution">
                         <tr><th>รูปแบบ (Pattern)</th><th>ยุคคลาสสิก</th><th>ยุคหลังสมัยใหม่ (Post-Modern)</th></tr>
-                        <tr><td><span class="highlight">1. สากลนิยม → บริบทนิยม</span></td><td>One Best Way</td><td>หลายเส้นทาง (Equifinality)</td></tr>
+                        <tr><td><span class="highlight">1. สากลนิยม → บริบทนิยม</span></td><td>One Best Way</td><td>Equifinality (หลายเส้นทาง)</td></tr>
                         <tr><td><span class="highlight">2. ประสิทธิภาพสถิต → การปรับตัวพลวัต</span></td><td>โครงสร้างคงที่</td><td>ปรับเปลี่ยนต่อเนื่อง</td></tr>
-                        <tr><td><span class="highlight">3. ระบบปิด → ระบบนิเวศเปิด</span></td><td>จุดเน้นภายใน</td><td>ร่วมมือกับสิ่งแวดล้อม</td></tr>
+                        <tr><td><span class="highlight">3. ระบบปิด → ระบบนิเวศเปิด</span></td><td>จุดเน้นภายใน</td><td>พึ่งพากับสิ่งแวดล้อม</td></tr>
                         <tr><td><span class="highlight">4. ขับเคลื่อนด้วยประสิทธิภาพ → ขับเคลื่อนด้วยจุดมุ่งหมาย</span></td><td>กำไรสูงสุด</td><td>คุณค่าแก่ผู้มีส่วนได้ส่วนเสีย</td></tr>
                     </table>
-                    <p>4 รูปแบบนี้เป็นรากฐานการออกแบบกรอบ <span class="highlight">DAO (Dynamic Adaptive Organization)</span></p>
+                    <p>✨ ทั้ง 4 รูปแบบนี้คือรากฐานในการออกแบบ <span class="highlight">Dynamic Adaptive Organization (DAO)</span> ให้ครอบคลุมมิติต่าง ๆ</p>
                 `
             },
-            { // Slide 12
+            {
                 title: "กรอบ DAO: หลักการออกแบบและภาพรวม",
                 body: `
-                    <p><span class="highlight">หลักการออกแบบ 3 ประการ:</span></p>
+                    <p><span class="highlight">📌 ความสำคัญ:</span> DAO ไม่ใช่ทฤษฎีใหม่ แต่เป็นกรอบสังเคราะห์ที่รวบรวมข้อดีของทุกทฤษฎีมาไว้ในโครงสร้างเดียวกัน เพื่อให้องค์กรวินิจฉัยตนเองได้</p>
+                    <p><span class="highlight">🎯 วัตถุประสงค์:</span> <em>“ทำให้องค์กรมีความสามารถในการปรับตัวอย่างยั่งยืนในโลก VUCA/BANI”</em></p>
+                    <p><span class="highlight">⚙️ หลักการออกแบบ 3 ประการ:</span></p>
                     <ul class="bullet-list">
-                        <li>ความครอบคลุม (Comprehensiveness) — ปัจจัยภายนอก, ทรัพยากรภายใน, กลไกองค์กร, คุณค่า</li>
-                        <li>การวิเคราะห์เป็นชั้น (Layered Analysis) — มี Feedback Loops (Senge 1990, Meadows 2008)</li>
-                        <li>ความสามารถปรับตัว (Adaptability) — เครื่องมือวินิจฉัย ไม่ใช่ใบสั่งยาคงที่</li>
+                        <li><span class="highlight">Comprehensiveness</span> — ครอบคลุมปัจจัยภายนอก ทรัพยากรภายใน กลไก และคุณค่า</li>
+                        <li><span class="highlight">Layered Analysis</span> — วิเคราะห์เป็นชั้น ๆ พร้อม Feedback Loops (Senge, 1990; Meadows, 2008)</li>
+                        <li><span class="highlight">Adaptability</span> — เป็นเครื่องมือวินิจฉัย ไม่ใช่ใบสั่งยาคงที่</li>
                     </ul>
                     <div style="text-align:center;margin-top:1rem;">
                         <div class="dao-layer"><span class="layer-title">ชั้น 4: Purpose & Values</span></div>
-                        <div class="feedback-arrow-down">↕</div>
+                        <div class="feedback-arrow-down">↕️ Feedback</div>
                         <div class="dao-layer"><span class="layer-title">ชั้น 3: Adaptation Mechanism</span></div>
-                        <div class="feedback-arrow-down">↕</div>
+                        <div class="feedback-arrow-down">↕️</div>
                         <div class="dao-layer"><span class="layer-title">ชั้น 2: Resource & Capability</span></div>
-                        <div class="feedback-arrow-down">↕</div>
+                        <div class="feedback-arrow-down">↕️</div>
                         <div class="dao-layer"><span class="layer-title">ชั้น 1: Environmental Sensing</span></div>
                     </div>
-                    <p style="margin-top:0.5rem;">กรอบสังเคราะห์ — ไม่ใช่ทฤษฎีเชิงประจักษ์ใหม่ แต่คือเครื่องมือวินิจฉัยเชิงระบบ</p>
+                    <p style="margin-top:0.5rem;"><span class="highlight">🔗 เชื่อมโยง:</span> แต่ละชั้นตอบสนองต่อข้อจำกัดของทฤษฎีก่อนหน้า (เช่น Purpose แก้ปัญหามนุษย์มิติเดียว, Adaptation Mechanism แก้ปัญหา Structural Inertia)</p>
                 `
             },
-            { // Slide 13
+            {
                 title: "โครงสร้าง 4 ชั้นของกรอบ DAO โดยละเอียด (ตาราง 1.2)",
                 body: `
+                    <p><span class="highlight">📌 ความสำคัญ:</span> การเข้าใจรายละเอียดของแต่ละชั้นช่วยให้สามารถนำไปวินิจฉัยและออกแบบการจัดการได้อย่างเป็นรูปธรรม</p>
                     <div class="dao-layer" style="border-left:5px solid #d4a843;">
                         <div class="layer-title">ชั้นที่ 4: จุดมุ่งหมายและค่านิยม (Purpose & Values)</div>
-                        <div class="layer-content">Core Purpose, ค่านิยม, วิสัยทัศน์, Stakeholder Identity [Collins & Porras; Sinek; Freeman]</div>
+                        <div class="layer-content">Core Purpose, ค่านิยม, วิสัยทัศน์, Stakeholder Identity <br>[Collins & Porras; Sinek; Freeman] – <em>เหตุผลที่องค์กรดำรงอยู่</em></div>
                     </div>
-                    <div class="feedback-arrow-down">⬇️ Feedback Loop ⬆️</div>
+                    <div class="feedback-arrow-down">⬇️ Feedback Loop — ชั้นบนกำหนดทิศทาง, ชั้นล่างให้ข้อมูลย้อนกลับ ⬆️</div>
                     <div class="dao-layer" style="border-left:5px solid #4fc3f7;">
                         <div class="layer-title">ชั้นที่ 3: กลไกการปรับตัว (Adaptation Mechanism)</div>
-                        <div class="layer-content">Ambidexterity, Agile Teams, Learning Loops, Cynefin Navigation [March; Senge; Snowden & Boone]</div>
+                        <div class="layer-content">Ambidexterity, Agile Teams, Learning Loops, Cynefin Navigation <br>[March; Senge; Snowden & Boone] – <em>วิธีการที่องค์กรเรียนรู้และเปลี่ยน</em></div>
                     </div>
                     <div class="feedback-arrow-down">⬇️⬆️</div>
                     <div class="dao-layer" style="border-left:5px solid #f9a825;">
                         <div class="layer-title">ชั้นที่ 2: ทรัพยากรและความสามารถ (Resource & Capability)</div>
-                        <div class="layer-content">VRIN Resources, Dynamic Capabilities (Sense-Seize-Transform) [Barney; Teece et al.]</div>
+                        <div class="layer-content">ทรัพยากร VRIN, Dynamic Capabilities (Sense-Seize-Transform) <br>[Barney; Teece et al.] – <em>สิ่งที่องค์กรมีและทำได้</em></div>
                     </div>
                     <div class="feedback-arrow-down">⬇️⬆️</div>
                     <div class="dao-layer" style="border-left:5px solid #66bb6a;">
                         <div class="layer-title">ชั้นที่ 1: การรับรู้สภาพแวดล้อม (Environmental Sensing)</div>
-                        <div class="layer-content">VUCA/BANI Radar, Stakeholder Map, Weak Signal Detection [Bennett & Lemoine; Cascio]</div>
+                        <div class="layer-content">VUCA/BANI Radar, Stakeholder Map, Weak Signal Detection <br>[Bennett & Lemoine; Cascio] – <em>การอ่านสัญญาณโลกภายนอก</em></div>
                     </div>
-                    <p style="margin-top:0.5rem;"><span class="highlight">Helfat et al. (2007):</span> เมื่อทั้ง 4 ชั้นทำงานประสานกัน = Evolutionary Fitness</p>
+                    <p style="margin-top:0.5rem;"><span class="highlight">Helfat et al. (2007):</span> เมื่อทั้ง 4 ชั้นทำงานประสานกัน = Evolutionary Fitness (ความเหมาะสมเชิงวิวัฒนาการ)</p>
                 `
             },
-            { // Slide 14
+            {
                 title: "นัยต่องานวิจัยและแนวปฏิบัติธุรกิจไทย/อาเซียน",
                 body: `
                     <div class="two-col">
                         <div>
-                            <p><strong>🔬 ทิศทางการวิจัย</strong></p>
-                            <p>1. ศึกษาเชิงประจักษ์ DAO กับผลการดำเนินงาน</p>
-                            <p>2. พัฒนาเครื่องมือ DAO Maturity</p>
+                            <p style="font-weight:700;">🔬 ทิศทางการวิจัย</p>
+                            <p>1. ศึกษาเชิงประจักษ์: สมดุล DAO กับ Performance</p>
+                            <p>2. พัฒนาแบบวัด DAO Maturity</p>
                             <p>3. ทดสอบข้ามวัฒนธรรมในไทย/อาเซียน</p>
                         </div>
                         <div>
-                            <p><strong>🌏 นัยต่อไทย/อาเซียน</strong></p>
-                            <p>1. กับดักรายได้ปานกลาง — ต้องการ Dynamic Capabilities (World Bank, 2020)</p>
-                            <p>2. ธุรกิจครอบครัว — จุดแข็ง: ระยะยาว+ไว้วางใจ; ข้อจำกัด: สืบทอด+ธรรมาภิบาล</p>
-                            <p>3. High Power Distance — ขัดแย้งกับ Ambidexterity; ออกแบบ Bounded Experimentation Spaces</p>
+                            <p style="font-weight:700;">🌏 นัยต่อไทย/อาเซียน</p>
+                            <p>1. <span class="highlight">กับดักรายได้ปานกลาง:</span> ต้องเร่ง Dynamic Capabilities & Exploration (World Bank, 2020)</p>
+                            <p>2. <span class="highlight">ธุรกิจครอบครัว:</span> ใช้จุดแข็งระยะยาวและ Trust แต่ต้องจัดการความเสี่ยงสืบทอดและ Governance</p>
+                            <p>3. <span class="highlight">High Power Distance:</span> ต้องออกแบบ Bounded Experimentation Spaces เพื่อให้เกิด Ambidexterity โดยไม่ขัดกับวัฒนธรรม</p>
                         </div>
                     </div>
-                    <p style="margin-top:0.8rem;"><em>ข้อจำกัด DAO:</em> ฐานวรรณกรรมตะวันตก; ซับซ้อนสำหรับ SMEs; Feedback Loops วัดยาก</p>
+                    <p><span class="highlight">⚠️ ข้อจำกัดของ DAO:</span> ฐานวรรณกรรมตะวันตก; ซับซ้อนสำหรับ SMEs; Feedback Loops ที่ไม่เป็นเส้นตรงวัดได้ยาก</p>
                 `
             },
-            { // Slide 15
+            {
                 title: "บทสรุปและคำถามอภิปราย",
                 body: `
-                    <p><span class="highlight">Key Takeaway:</span> ทฤษฎีไม่ได้แทนที่กัน — หากแต่เพิ่มมิติใหม่ขณะเผยข้อจำกัดของทฤษฎีก่อนหน้า</p>
-                    <p><span class="highlight">DAO Core Proposition:</span> องค์กรต้องพัฒนาทั้ง 4 ชั้นพร้อมกัน โดยมีจุดมุ่งหมายนำทาง เพื่อสมรรถนะปรับตัวที่ยั่งยืนในโลก VUCA/BANI</p>
-                    <p style="margin-top:1rem;"><strong>คำถามอภิปราย (3 ข้อ):</strong></p>
-                    <p>1. <span class="highlight">Taylor กับองค์กรความรู้:</span> แนวคิดใดของ Taylor ยังมีคุณค่าในองค์กรงานความรู้ — และต้องปรับข้อสมมติใด?</p>
-                    <p>2. <span class="highlight">RBV กับ VUCA:</span> ระหว่าง Dynamic Capabilities กับ Agile Organization ทฤษฎีใดให้คำตอบที่สมบูรณ์กว่า?</p>
-                    <p>3. <span class="highlight">BANI กับ Systems Thinking:</span> ข้อสมมติ “Incomprehensible” ของ Cascio กระทบ Systems Thinking อย่างไร — AI จะเปลี่ยนคำตอบหรือไม่?</p>
+                    <p><span class="highlight">📌 Key Takeaway:</span> ทฤษฎีไม่ได้แทนที่กัน – หากแต่เพิ่มมิติใหม่ขณะเผยข้อจำกัดของทฤษฎีก่อนหน้า การวิพากษ์ไม่ได้ลดคุณค่า แต่กำหนดขอบเขตการใช้งานที่เหมาะสม</p>
+                    <p><span class="highlight">🎯 DAO Core Proposition:</span> องค์กรต้องพัฒนาทั้ง 4 ชั้นพร้อมกัน โดยมีจุดมุ่งหมายนำทาง เพื่อสร้างสมรรถนะปรับตัวที่ยั่งยืนในโลก VUCA/BANI</p>
+                    <p style="margin-top:1rem;"><strong>❓ คำถามอภิปราย (3 ข้อ):</strong></p>
+                    <p>1. <span class="highlight">Taylor ในองค์กรความรู้:</span> หากสมมติฐาน “Economic Man” ผิดไป แนวคิดใดของ Taylor ยังมีคุณค่า และต้องปรับปรุงอย่างไร?</p>
+                    <p>2. <span class="highlight">RBV vs. Agile ในโลก VUCA:</span> ระหว่าง Dynamic Capabilities กับ Agile Organization ทฤษฎีใดให้คำตอบที่สมบูรณ์กว่า?</p>
+                    <p>3. <span class="highlight">BANI & Systems Thinking:</span> หากโลกเป็น “Incomprehensible” ตาม Cascio – Systems Thinking ของ Senge ยังใช้ได้หรือไม่? AI จะเปลี่ยนคำตอบหรือไม่?</p>
                     <p style="text-align:center;font-style:italic;margin-top:1.5rem;">"บทต่อไป: การประยุกต์กรอบ DAO เพื่อวิเคราะห์ภาวะผู้นำในองค์กรยุคใหม่"</p>
                 `
             }
@@ -500,14 +472,9 @@ html<!DOCTYPE html>
         }
 
         function changeSlide(direction) {
-            if (direction === -1 && currentSlide > 0) {
-                currentSlide--;
-            } else if (direction === 1 && currentSlide < slidesData.length - 1) {
-                currentSlide++;
-            }
-            document.querySelectorAll('.slide').forEach((s, i) => {
-                s.classList.toggle('active', i === currentSlide);
-            });
+            if (direction === -1 && currentSlide > 0) currentSlide--;
+            else if (direction === 1 && currentSlide < slidesData.length - 1) currentSlide++;
+            document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === currentSlide));
             updateNavButtons();
         }
 
@@ -516,10 +483,8 @@ html<!DOCTYPE html>
             document.getElementById('nextBtn').disabled = currentSlide === slidesData.length - 1;
         }
 
-        // Init
         renderSlides();
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') changeSlide(1);
             if (e.key === 'ArrowLeft') changeSlide(-1);
@@ -527,4 +492,3 @@ html<!DOCTYPE html>
     </script>
 </body>
 </html>
-
