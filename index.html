@@ -4,388 +4,482 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</title>
-  <meta name="description" content="Premium HTML presentation for GitHub Pages" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Sarabun", sans-serif;
+      background: linear-gradient(135deg, #eef4fb, #dfeaf7);
+      color: #18314a;
+      overflow: hidden;
+    }
+    h1, h2, h3 { font-family: "Prompt", sans-serif; margin: 0; }
+    .app {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .topbar {
+      height: 60px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.75);
+      border-bottom: 1px solid rgba(24,49,74,0.08);
+      backdrop-filter: blur(10px);
+    }
+    .title {
+      font-family: "Prompt", sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .counter {
+      font-weight: 700;
+      color: #164a7a;
+    }
+    .slides {
+      flex: 1;
+      position: relative;
+    }
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: 60px;
+      overflow: auto;
+      animation: fade 0.35s ease;
+    }
+    .slide.active { display: block; }
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(24,49,74,0.08);
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(26,59,92,0.10);
+      padding: 28px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+      height: 100%;
+    }
+    .hero-visual {
+      height: 100%;
+      min-height: 420px;
+      border-radius: 28px;
+      background:
+        linear-gradient(rgba(10,39,70,0.35), rgba(10,39,70,0.35)),
+        url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80') center/cover;
+      box-shadow: 0 15px 40px rgba(26,59,92,0.14);
+    }
+    .eyebrow {
+      color: #129c95;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    h1 { font-size: 52px; line-height: 1.08; color: #164a7a; }
+    h2 { font-size: 34px; line-height: 1.15; color: #164a7a; margin-bottom: 20px; }
+    h3 { font-size: 20px; color: #164a7a; margin-bottom: 8px; }
+    p, li { line-height: 1.7; font-size: 18px; }
+    .lead { font-size: 20px; color: #4f647a; margin-top: 18px; }
+    .tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+    .tag {
+      background: #e4f6f4;
+      color: #164a7a;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .grid-2, .grid-3 {
+      display: grid;
+      gap: 18px;
+    }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .mini {
+      background: rgba(255,255,255,0.9);
+      border-radius: 20px;
+      padding: 22px;
+      border: 1px solid rgba(24,49,74,0.08);
+      box-shadow: 0 10px 24px rgba(26,59,92,0.08);
+    }
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .timeline .mini { min-height: 150px; }
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .compare .mini:first-child { border-top: 6px solid #7f8d9c; }
+    .compare .mini:last-child { border-top: 6px solid #129c95; }
+    .system {
+      display: grid;
+      grid-template-columns: 1fr auto 1.2fr auto 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+    .box {
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(24,49,74,0.08);
+      box-shadow: 0 10px 24px rgba(26,59,92,0.08);
+      text-align: center;
+    }
+    .arrow {
+      font-size: 36px;
+      color: #129c95;
+      font-weight: 700;
+      text-align: center;
+    }
+    .pestel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .footer {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background: rgba(255,255,255,0.75);
+      border-top: 1px solid rgba(24,49,74,0.08);
+      backdrop-filter: blur(10px);
+    }
+    button {
+      border: none;
+      background: #164a7a;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    button.secondary {
+      background: #129c95;
+    }
+    .quote {
+      margin-top: 24px;
+      padding: 22px;
+      border-left: 6px solid #129c95;
+      background: rgba(255,255,255,0.92);
+      border-radius: 18px;
+      font-family: "Prompt", sans-serif;
+      font-size: 24px;
+      color: #164a7a;
+    }
+    ul { margin: 0; padding-left: 22px; }
+    @media (max-width: 900px) {
+      .hero, .grid-2, .grid-3, .compare, .system, .timeline, .pestel {
+        grid-template-columns: 1fr !important;
+      }
+      .slide { padding: 28px; }
+      h1 { font-size: 36px; }
+      h2 { font-size: 28px; }
+      .hero-visual { min-height: 280px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div class="bg-grid"></div>
+  <div class="app">
+    <div class="topbar">
+      <div class="title">แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</div>
+      <div class="counter"><span id="current">1</span> / <span id="total">15</span></div>
+    </div>
 
-  <div class="layout">
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <div class="brand-mark"></div>
-        <div>
-          <div class="sidebar-title">Modern Management</div>
-          <div class="sidebar-subtitle">Premium Deck</div>
-        </div>
-      </div>
-
-      <nav class="slide-menu" id="slideMenu">
-        <button class="menu-item active" data-slide="0">1. Cover</button>
-        <button class="menu-item" data-slide="1">2. Objectives</button>
-        <button class="menu-item" data-slide="2">3. Big Picture</button>
-        <button class="menu-item" data-slide="3">4. Evolution</button>
-        <button class="menu-item" data-slide="4">5. Classical Theory</button>
-        <button class="menu-item" data-slide="5">6. Human Relations</button>
-        <button class="menu-item" data-slide="6">7. Theory X / Y</button>
-        <button class="menu-item" data-slide="7">8. Open System</button>
-        <button class="menu-item" data-slide="8">9. Contingency</button>
-        <button class="menu-item" data-slide="9">10. PESTEL</button>
-        <button class="menu-item" data-slide="10">11. Modern Org</button>
-        <button class="menu-item" data-slide="11">12. Modern Theories</button>
-        <button class="menu-item" data-slide="12">13. Learning Org</button>
-        <button class="menu-item" data-slide="13">14. Agile & Digital</button>
-        <button class="menu-item" data-slide="14">15. Summary</button>
-      </nav>
-    </aside>
-
-    <div class="main-shell">
-      <header class="topbar">
-        <div class="topbar-left">
-          <button id="toggleSidebar" class="ghost-btn">☰</button>
-          <div>
-            <div class="top-title">แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</div>
-            <div class="top-subtitle" id="dynamicSubtitle">Cover</div>
-          </div>
-        </div>
-        <div class="topbar-actions">
-          <button id="themeToggle" class="ghost-btn">ธีม</button>
-          <button id="fullscreenBtn" class="ghost-btn">Fullscreen</button>
-          <button id="printBtn" class="ghost-btn">Export PDF</button>
-        </div>
-      </header>
-
-      <main class="presentation">
-        <!-- 1 -->
-        <section class="slide active cover-slide" data-title="Cover">
-          <div class="cover-overlay"></div>
-          <div class="cover-content reveal">
-            <div class="eyebrow">Business Administration · Strategic Management · Organization Theory</div>
+    <div class="slides">
+      <section class="slide active">
+        <div class="hero">
+          <div class="card">
+            <div class="eyebrow">Business Administration</div>
             <h1>แนวคิดและทฤษฎี<br>การบริหารธุรกิจองค์กรยุคใหม่</h1>
             <p class="lead">
-              วิวัฒนาการแนวคิดการบริหาร การเปลี่ยนแปลงของสภาพแวดล้อมธุรกิจ
-              และกรอบองค์กรสมัยใหม่ที่ขับเคลื่อนด้วยข้อมูล เทคโนโลยี และการเรียนรู้
+              ศึกษาวิวัฒนาการของแนวคิดการบริหาร ทฤษฎีองค์กร
+              และแนวทางบริหารที่เหมาะกับสภาพแวดล้อมธุรกิจยุคปัจจุบัน
             </p>
-            <div class="tag-row">
-              <span class="tag">Academic</span>
+            <div class="tags">
               <span class="tag">Modern</span>
-              <span class="tag">Premium</span>
-              <span class="tag">GitHub Ready</span>
+              <span class="tag">Academic</span>
+              <span class="tag">Management</span>
+              <span class="tag">Strategy</span>
             </div>
           </div>
-        </section>
+          <div class="hero-visual"></div>
+        </div>
+      </section>
 
-        <!-- 2 -->
-        <section class="slide" data-title="Objectives">
-          <div class="slide-header reveal">
-            <div class="eyebrow">Learning Goals</div>
-            <h2>วัตถุประสงค์การเรียนรู้</h2>
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Objectives</div>
+          <h2>วัตถุประสงค์การเรียนรู้</h2>
+          <div class="grid-2">
+            <div class="mini"><h3>1. เข้าใจวิวัฒนาการ</h3><p>อธิบายพัฒนาการของแนวคิดการบริหารจากอดีตถึงปัจจุบัน</p></div>
+            <div class="mini"><h3>2. วิเคราะห์บริบท</h3><p>ประเมินผลกระทบของปัจจัยภายนอกที่มีต่อองค์กรธุรกิจ</p></div>
+            <div class="mini"><h3>3. เปรียบเทียบทฤษฎี</h3><p>เชื่อมโยงทฤษฎีการบริหารแบบดั้งเดิมและสมัยใหม่</p></div>
+            <div class="mini"><h3>4. ประยุกต์ใช้</h3><p>นำแนวคิดไปใช้ในการบริหารองค์กรและการตัดสินใจจริง</p></div>
           </div>
-          <div class="grid two-two">
-            <div class="card reveal delay-1">
-              <div class="num">01</div>
-              <h3>เข้าใจวิวัฒนาการ</h3>
-              <p>อธิบายแนวคิดการบริหารตั้งแต่ยุคคลาสสิก มนุษยสัมพันธ์ จนถึงดิจิทัล</p>
-            </div>
-            <div class="card reveal delay-2">
-              <div class="num">02</div>
-              <h3>วิเคราะห์บริบท</h3>
-              <p>ประเมินผลกระทบของปัจจัยภายนอกต่อการบริหารองค์กรยุคใหม่</p>
-            </div>
-            <div class="card reveal delay-3">
-              <div class="num">03</div>
-              <h3>เปรียบเทียบทฤษฎี</h3>
-              <p>เชื่อมโยงทฤษฎีดั้งเดิมและสมัยใหม่อย่างเป็นระบบ</p>
-            </div>
-            <div class="card reveal delay-4">
-              <div class="num">04</div>
-              <h3>ประยุกต์ใช้จริง</h3>
-              <p>ใช้แนวคิดการบริหารกับสถานการณ์ธุรกิจและการตัดสินใจระดับองค์กร</p>
-            </div>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- 3 -->
-        <section class="slide" data-title="Big Picture">
-          <div class="slide-header reveal">
-            <div class="eyebrow">Framework View</div>
-            <h2>การบริหารองค์กรยุคใหม่: ภาพรวม</h2>
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Overview</div>
+          <h2>ภาพรวมการบริหารองค์กรยุคใหม่</h2>
+          <div class="grid-3">
+            <div class="mini"><h3>Strategy</h3><p>การกำหนดทิศทางและความได้เปรียบในการแข่งขัน</p></div>
+            <div class="mini"><h3>People</h3><p>บุคลากร วัฒนธรรม และภาวะผู้นำ</p></div>
+            <div class="mini"><h3>Technology</h3><p>ระบบดิจิทัล ข้อมูล และแพลตฟอร์ม</p></div>
+            <div class="mini"><h3>Structure</h3><p>โครงสร้างที่ยืดหยุ่นและรองรับการเปลี่ยนแปลง</p></div>
+            <div class="mini"><h3>Innovation</h3><p>การเรียนรู้ ทดลอง และพัฒนาต่อเนื่อง</p></div>
+            <div class="mini"><h3>Sustainability</h3><p>การสร้างคุณค่าระยะยาวต่อผู้มีส่วนได้ส่วนเสีย</p></div>
           </div>
-          <div class="big-picture">
-            <div class="center-core reveal">Modern<br>Management</div>
-            <div class="bp-card reveal delay-1">Strategy</div>
-            <div class="bp-card reveal delay-2">People</div>
-            <div class="bp-card reveal delay-3">Technology</div>
-            <div class="bp-card reveal delay-4">Data</div>
-            <div class="bp-card reveal delay-5">Innovation</div>
-            <div class="bp-card reveal delay-6">Sustainability</div>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- 4 -->
-        <section class="slide" data-title="Evolution">
-          <div class="slide-header reveal">
-            <div class="eyebrow">Historical Development</div>
-            <h2>วิวัฒนาการแนวคิดการบริหาร</h2>
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Evolution</div>
+          <h2>วิวัฒนาการแนวคิดการบริหาร</h2>
+          <div class="timeline">
+            <div class="mini"><h3>Classical</h3><p>เน้นประสิทธิภาพ มาตรฐาน และการควบคุม</p></div>
+            <div class="mini"><h3>Administrative</h3><p>เน้นหน้าที่การจัดการและหลักการบริหาร</p></div>
+            <div class="mini"><h3>Human Relations</h3><p>ให้ความสำคัญกับคนและความสัมพันธ์ในงาน</p></div>
+            <div class="mini"><h3>Behavioral</h3><p>ศึกษาพฤติกรรม แรงจูงใจ และภาวะผู้นำ</p></div>
+            <div class="mini"><h3>Systems</h3><p>มององค์กรเป็นระบบที่เชื่อมโยงกับสิ่งแวดล้อม</p></div>
+            <div class="mini"><h3>Digital & Agile</h3><p>เน้นความคล่องตัว ข้อมูล และนวัตกรรม</p></div>
           </div>
-          <div class="timeline reveal delay-1">
-            <div class="t-item"><span>Classical</span><p>ประสิทธิภาพและมาตรฐาน</p></div>
-            <div class="t-item"><span>Administrative</span><p>หน้าที่และหลักการจัดการ</p></div>
-            <div class="t-item"><span>Human Relations</span><p>คนและปัจจัยทางสังคม</p></div>
-            <div class="t-item"><span>Behavioral</span><p>แรงจูงใจและภาวะผู้นำ</p></div>
-            <div class="t-item"><span>Systems</span><p>องค์รวมและการป้อนกลับ</p></div>
-            <div class="t-item"><span>Digital & Agile</span><p>คล่องตัวและข้อมูล</p></div>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- 5 -->
-        <section class="slide" data-title="Classical Theory">
-          <div class="slide-header reveal">
-            <div class="eyebrow">Foundational Theories</div>
-            <h2>ทฤษฎีการบริหารยุคคลาสสิก</h2>
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Classical Theory</div>
+          <h2>ทฤษฎีการบริหารยุคคลาสสิก</h2>
+          <div class="grid-3">
+            <div class="mini"><h3>Taylor</h3><p>Scientific Management เน้นการวิเคราะห์งานและเพิ่มประสิทธิภาพ</p></div>
+            <div class="mini"><h3>Fayol</h3><p>Administrative Theory วางหลักหน้าที่การบริหารอย่างเป็นระบบ</p></div>
+            <div class="mini"><h3>Weber</h3><p>Bureaucracy เน้นกฎ ระเบียบ ความชัดเจน และลำดับขั้น</p></div>
           </div>
-          <div class="table-card reveal delay-1">
-            <table>
-              <thead>
-                <tr>
-                  <th>นักคิด</th>
-                  <th>แนวคิดหลัก</th>
-                  <th>ข้อสังเกต</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Taylor</td>
-                  <td>Scientific Management</td>
-                  <td>เน้นประสิทธิภาพ มาตรฐาน และการวัดผล</td>
-                </tr>
-                <tr>
-                  <td>Fayol</td>
-                  <td>Administrative Theory</td>
-                  <td>วางหน้าที่การบริหารอย่างเป็นระบบ</td>
-                </tr>
-                <tr>
-                  <td>Weber</td>
-                  <td>Bureaucracy</td>
-                  <td>ชัดเจน ตรวจสอบได้ แต่ยืดหยุ่นต่ำ</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- 6 -->
-        <section class="slide image-slide" data-title="Human Relations">
-          <div class="image-side" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80');"></div>
-          <div class="content-side">
-            <div class="slide-header reveal">
-              <div class="eyebrow">People and Motivation</div>
-              <h2>มนุษยสัมพันธ์และพฤติกรรมองค์กร</h2>
-            </div>
-            <div class="bullet-card reveal delay-1">
-              <ul>
-                <li>Elton Mayo ชี้ว่าปัจจัยทางสังคมมีผลต่อประสิทธิภาพงาน</li>
-                <li>Maslow อธิบายลำดับขั้นความต้องการของมนุษย์</li>
-                <li>Herzberg แยกปัจจัยจูงใจและปัจจัยค้ำจุน</li>
-                <li>องค์กรเริ่มมอง “คน” เป็นทุนสำคัญ ไม่ใช่เพียงทรัพยากรแรงงาน</li>
-              </ul>
-            </div>
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Human Relations</div>
+          <h2>มนุษยสัมพันธ์และแรงจูงใจ</h2>
+          <div class="grid-2">
+            <div class="mini"><h3>Elton Mayo</h3><p>ปัจจัยทางสังคมและความสัมพันธ์มีผลต่อประสิทธิภาพการทำงาน</p></div>
+            <div class="mini"><h3>Maslow</h3><p>มนุษย์มีลำดับขั้นความต้องการตั้งแต่พื้นฐานจนถึงการเติมเต็มศักยภาพ</p></div>
+            <div class="mini"><h3>Herzberg</h3><p>แยกปัจจัยค้ำจุนและปัจจัยจูงใจในการทำงาน</p></div>
+            <div class="mini"><h3>แนวคิดสำคัญ</h3><p>องค์กรต้องเข้าใจ “คน” ไม่ใช่มองเพียงประสิทธิภาพเชิงกลไก</p></div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- 7 -->
-        <section class="slide" data-title="Theory X / Y">
-          <div class="slide-header reveal">
-            <div class="eyebrow">Assumption About People</div>
-            <h2>Theory X และ Theory Y</h2>
-          </div>
-          <div class="compare-grid">
-            <div class="compare-card reveal delay-1">
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Theory X / Y</div>
+          <h2>Theory X และ Theory Y</h2>
+          <div class="compare">
+            <div class="mini">
               <h3>Theory X</h3>
               <ul>
                 <li>มองว่าคนไม่ชอบทำงาน</li>
                 <li>ต้องควบคุมและสั่งการ</li>
-                <li>เหมาะกับงานโครงสร้างสูง</li>
+                <li>เหมาะกับงานที่มีโครงสร้างชัด</li>
               </ul>
             </div>
-            <div class="compare-card positive reveal delay-2">
+            <div class="mini">
               <h3>Theory Y</h3>
               <ul>
-                <li>มองว่าคนมีแรงจูงใจภายใน</li>
-                <li>ส่งเสริมความรับผิดชอบและการมีส่วนร่วม</li>
+                <li>มองว่าคนพัฒนาได้</li>
+                <li>สนับสนุนการมีส่วนร่วม</li>
                 <li>เหมาะกับงานสร้างสรรค์และนวัตกรรม</li>
               </ul>
             </div>
           </div>
-        </section>
-
-        <!-- 8 -->
-        <section class="slide" data-title="Open System">
-          <div class="slide-header reveal">
-            <div class="eyebrow">Open System Perspective</div>
-            <h2>องค์กรในฐานะระบบเปิด</h2>
-          </div>
-          <div class="system-diagram reveal delay-1">
-            <div class="sys-box">Input<br><span>คน เงิน ข้อมูล เทคโนโลยี</span></div>
-            <div class="sys-arrow">→</div>
-            <div class="sys-box primary">Process<br><span>บริหาร ผลิต ประสานงาน ตัดสินใจ</span></div>
-            <div class="sys-arrow">→</div>
-            <div class="sys-box">Output<br><span>สินค้า บริการ คุณค่า ผลลัพธ์</span></div>
-          </div>
-          <div class="feedback reveal delay-2">Feedback จากลูกค้า ตลาด และผลการดำเนินงาน</div>
-        </section>
-
-        <!-- 9 -->
-        <section class="slide" data-title="Contingency">
-          <div class="slide-header reveal">
-            <div class="eyebrow">Situational Fit</div>
-            <h2>ทฤษฎีเชิงสถานการณ์</h2>
-          </div>
-          <div class="chip-grid">
-            <div class="chip reveal delay-1">ขนาดองค์กร</div>
-            <div class="chip reveal delay-2">เทคโนโลยี</div>
-            <div class="chip reveal delay-3">สภาพแวดล้อม</div>
-            <div class="chip reveal delay-4">วัฒนธรรม</div>
-            <div class="chip reveal delay-5">กลยุทธ์</div>
-            <div class="chip reveal delay-6">บุคลากร</div>
-          </div>
-          <div class="quote-box reveal delay-6">
-            ไม่มีรูปแบบการบริหารแบบเดียวที่ดีที่สุดสำหรับทุกองค์กร —
-            ความเหมาะสมขึ้นอยู่กับ “บริบท” และ “สถานการณ์”
-          </div>
-        </section>
-
-        <!-- 10 -->
-        <section class="slide image-overlay-slide" data-title="PESTEL">
-          <div class="bg-image" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80');"></div>
-          <div class="dark-overlay"></div>
-          <div class="content-wrap">
-            <div class="slide-header reveal">
-              <div class="eyebrow">Business Environment</div>
-              <h2>PESTEL และสภาพแวดล้อมธุรกิจ</h2>
-            </div>
-            <div class="pestel-grid reveal delay-1">
-              <div>Political</div>
-              <div>Economic</div>
-              <div>Social</div>
-              <div>Technological</div>
-              <div>Environmental</div>
-              <div>Legal</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 11 -->
-        <section class="slide" data-title="Modern Org">
-          <div class="slide-header reveal">
-            <div class="eyebrow">Key Dimensions</div>
-            <h2>คุณลักษณะขององค์กรยุคใหม่</h2>
-          </div>
-          <div class="grid three reveal delay-1">
-            <div class="card">Agility</div>
-            <div class="card">Customer Centricity</div>
-            <div class="card">Data-Driven</div>
-            <div class="card">Innovation</div>
-            <div class="card">Cross-functional Work</div>
-            <div class="card">ESG & Sustainability</div>
-          </div>
-        </section>
-
-        <!-- 12 -->
-        <section class="slide" data-title="Modern Theories">
-          <div class="slide-header reveal">
-            <div class="eyebrow">Contemporary Frameworks</div>
-            <h2>กรอบทฤษฎีองค์กรสมัยใหม่</h2>
-          </div>
-          <div class="theory-stack reveal delay-1">
-            <div class="stack-item">Learning Organization</div>
-            <div class="stack-item">Knowledge Management</div>
-            <div class="stack-item">Agile Organization</div>
-            <div class="stack-item">Network Organization</div>
-            <div class="stack-item">Digital Organization</div>
-            <div class="stack-item">High-Performance Organization</div>
-          </div>
-        </section>
-
-        <!-- 13 -->
-        <section class="slide" data-title="Learning Org">
-          <div class="slide-header reveal">
-            <div class="eyebrow">Peter Senge</div>
-            <h2>องค์กรแห่งการเรียนรู้</h2>
-          </div>
-          <div class="petal-wrap">
-            <div class="petal center reveal">Learning Org</div>
-            <div class="petal reveal delay-1">Personal Mastery</div>
-            <div class="petal reveal delay-2">Mental Models</div>
-            <div class="petal reveal delay-3">Shared Vision</div>
-            <div class="petal reveal delay-4">Team Learning</div>
-            <div class="petal reveal delay-5">Systems Thinking</div>
-          </div>
-        </section>
-
-        <!-- 14 -->
-        <section class="slide image-slide" data-title="Agile & Digital">
-          <div class="image-side" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80');"></div>
-          <div class="content-side">
-            <div class="slide-header reveal">
-              <div class="eyebrow">Transformation Management</div>
-              <h2>Agile และ Digital Transformation</h2>
-            </div>
-            <div class="bullet-card reveal delay-1">
-              <ul>
-                <li>Agile เน้นรอบการทำงานสั้น เรียนรู้เร็ว และตอบสนองไว</li>
-                <li>Digital Transformation เปลี่ยนทั้งกระบวนการ โมเดลธุรกิจ และประสบการณ์ลูกค้า</li>
-                <li>ข้อมูลและแพลตฟอร์มคือฐานสำคัญของความได้เปรียบในการแข่งขัน</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- 15 -->
-        <section class="slide summary-slide" data-title="Summary">
-          <div class="slide-header reveal">
-            <div class="eyebrow">Closing Reflection</div>
-            <h2>สรุปบทเรียน</h2>
-          </div>
-          <div class="grid three">
-            <div class="card reveal delay-1">
-              <h3>Past → Present</h3>
-              <p>แนวคิดการบริหารพัฒนาจากการควบคุมงานสู่การบริหารแบบยืดหยุ่นและมีส่วนร่วม</p>
-            </div>
-            <div class="card reveal delay-2">
-              <h3>Modern Priority</h3>
-              <p>องค์กรยุคใหม่ต้องผสานคน เทคโนโลยี ข้อมูล และความยั่งยืนเข้าด้วยกัน</p>
-            </div>
-            <div class="card reveal delay-3">
-              <h3>Leadership</h3>
-              <p>ผู้บริหารต้องเป็นผู้นำการเปลี่ยนแปลง สร้างวัฒนธรรมเรียนรู้ และผลักดันนวัตกรรม</p>
-            </div>
-          </div>
-          <blockquote class="final-quote reveal delay-4">
-            องค์กรที่พร้อมสำหรับอนาคต คือองค์กรที่เรียนรู้ไว ปรับตัวเร็ว และสร้างคุณค่าได้ต่อเนื่อง
-          </blockquote>
-        </section>
-      </main>
-
-      <footer class="footer-controls">
-        <div class="counter"><span id="currentSlide">1</span> / <span id="totalSlides">15</span></div>
-        <div class="actions">
-          <button id="prevBtn" class="nav-btn">← ก่อนหน้า</button>
-          <button id="nextBtn" class="nav-btn primary">ถัดไป →</button>
         </div>
-      </footer>
+      </section>
 
-      <div class="progress">
-        <div class="progress-bar" id="progressBar"></div>
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Open System</div>
+          <h2>องค์กรในฐานะระบบเปิด</h2>
+          <div class="system">
+            <div class="box"><h3>Input</h3><p>คน เงิน ข้อมูล เทคโนโลยี</p></div>
+            <div class="arrow">→</div>
+            <div class="box"><h3>Process</h3><p>การบริหาร การผลิต การตัดสินใจ การประสานงาน</p></div>
+            <div class="arrow">→</div>
+            <div class="box"><h3>Output</h3><p>สินค้า บริการ คุณค่า ผลประกอบการ</p></div>
+          </div>
+          <div class="quote">Feedback จากลูกค้า ตลาด และผลลัพธ์ ช่วยให้องค์กรปรับตัวได้ต่อเนื่อง</div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Contingency</div>
+          <h2>ทฤษฎีเชิงสถานการณ์</h2>
+          <div class="grid-3">
+            <div class="mini"><h3>ขนาดองค์กร</h3><p>องค์กรขนาดต่างกันใช้วิธีบริหารไม่เหมือนกัน</p></div>
+            <div class="mini"><h3>เทคโนโลยี</h3><p>ลักษณะงานและระบบเทคโนโลยีกำหนดรูปแบบการจัดการ</p></div>
+            <div class="mini"><h3>สภาพแวดล้อม</h3><p>ตลาดผันผวนต้องใช้ความยืดหยุ่นมากขึ้น</p></div>
+            <div class="mini"><h3>วัฒนธรรม</h3><p>ค่านิยมองค์กรมีผลต่อการบริหารคน</p></div>
+            <div class="mini"><h3>กลยุทธ์</h3><p>โครงสร้างและระบบต้องสอดคล้องกับกลยุทธ์</p></div>
+            <div class="mini"><h3>ข้อสรุป</h3><p>ไม่มีวิธีบริหารแบบเดียวที่เหมาะกับทุกสถานการณ์</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">PESTEL</div>
+          <h2>สภาพแวดล้อมธุรกิจภายนอก</h2>
+          <div class="pestel">
+            <div class="mini"><h3>Political</h3><p>นโยบายรัฐ เสถียรภาพ และการกำกับดูแล</p></div>
+            <div class="mini"><h3>Economic</h3><p>เงินเฟ้อ ดอกเบี้ย รายได้ และกำลังซื้อ</p></div>
+            <div class="mini"><h3>Social</h3><p>ค่านิยม พฤติกรรมผู้บริโภค และโครงสร้างประชากร</p></div>
+            <div class="mini"><h3>Technological</h3><p>ดิจิทัล AI ระบบอัตโนมัติ และนวัตกรรม</p></div>
+            <div class="mini"><h3>Environmental</h3><p>ทรัพยากร สิ่งแวดล้อม และความยั่งยืน</p></div>
+            <div class="mini"><h3>Legal</h3><p>กฎหมายแรงงาน ภาษี ข้อมูล และการแข่งขัน</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Modern Organization</div>
+          <h2>คุณลักษณะขององค์กรยุคใหม่</h2>
+          <div class="grid-3">
+            <div class="mini"><h3>Agility</h3><p>ตอบสนองต่อการเปลี่ยนแปลงได้เร็ว</p></div>
+            <div class="mini"><h3>Customer Centric</h3><p>ยึดลูกค้าเป็นศูนย์กลาง</p></div>
+            <div class="mini"><h3>Data-Driven</h3><p>ใช้ข้อมูลประกอบการตัดสินใจ</p></div>
+            <div class="mini"><h3>Innovation</h3><p>สนับสนุนการทดลองและพัฒนาต่อเนื่อง</p></div>
+            <div class="mini"><h3>Collaboration</h3><p>ทำงานข้ามสายงานอย่างมีประสิทธิภาพ</p></div>
+            <div class="mini"><h3>Sustainability</h3><p>คำนึงถึงคุณค่าระยะยาวและ ESG</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Modern Theories</div>
+          <h2>กรอบทฤษฎีองค์กรสมัยใหม่</h2>
+          <div class="grid-3">
+            <div class="mini"><h3>Learning Organization</h3><p>องค์กรเรียนรู้อย่างต่อเนื่อง</p></div>
+            <div class="mini"><h3>Agile Organization</h3><p>องค์กรที่คล่องตัวและตอบสนองเร็ว</p></div>
+            <div class="mini"><h3>Digital Organization</h3><p>องค์กรที่ใช้เทคโนโลยีและข้อมูลเป็นฐาน</p></div>
+            <div class="mini"><h3>Network Organization</h3><p>องค์กรที่เชื่อมโยงพันธมิตรและทีมยืดหยุ่น</p></div>
+            <div class="mini"><h3>Knowledge-Based</h3><p>องค์ความรู้เป็นทรัพยากรสำคัญ</p></div>
+            <div class="mini"><h3>High Performance</h3><p>มุ่งผลลัพธ์ ความสามารถ และความยั่งยืน</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Learning Organization</div>
+          <h2>องค์กรแห่งการเรียนรู้</h2>
+          <div class="grid-2">
+            <div class="mini"><h3>Personal Mastery</h3><p>พัฒนาศักยภาพตนเองอย่างต่อเนื่อง</p></div>
+            <div class="mini"><h3>Mental Models</h3><p>ทบทวนกรอบความคิดและสมมติฐานเดิม</p></div>
+            <div class="mini"><h3>Shared Vision</h3><p>สร้างวิสัยทัศน์ร่วมกันทั้งองค์กร</p></div>
+            <div class="mini"><h3>Team Learning</h3><p>เรียนรู้ร่วมกันในระดับทีม</p></div>
+            <div class="mini"><h3>Systems Thinking</h3><p>มองความสัมพันธ์เชิงระบบและผลกระทบต่อเนื่อง</p></div>
+            <div class="mini"><h3>ผลลัพธ์</h3><p>องค์กรปรับตัวไว สร้างนวัตกรรม และเติบโตอย่างยั่งยืน</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Agile & Digital</div>
+          <h2>Agile และ Digital Transformation</h2>
+          <div class="grid-2">
+            <div class="mini"><h3>Agile</h3><p>ทำงานเป็นรอบสั้น เรียนรู้เร็ว ปรับปรุงต่อเนื่อง และเน้นคุณค่าที่ลูกค้าได้รับ</p></div>
+            <div class="mini"><h3>Digital Transformation</h3><p>เปลี่ยนทั้งกระบวนการ โมเดลธุรกิจ ประสบการณ์ลูกค้า และวิธีตัดสินใจ</p></div>
+            <div class="mini"><h3>Technology Stack</h3><p>Cloud, Data, AI, Automation และ Platform เป็นองค์ประกอบสำคัญ</p></div>
+            <div class="mini"><h3>Leadership Role</h3><p>ผู้นำต้องขับเคลื่อนการเปลี่ยนแปลงและลดแรงต้านในองค์กร</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="card">
+          <div class="eyebrow">Summary</div>
+          <h2>สรุปบทเรียน</h2>
+          <div class="grid-3">
+            <div class="mini"><h3>1. แนวคิดการบริหารพัฒนาเสมอ</h3><p>จากการควบคุมเชิงกลไก สู่การบริหารที่ยืดหยุ่นและเน้นคน</p></div>
+            <div class="mini"><h3>2. บริบทมีความสำคัญ</h3><p>ผู้บริหารต้องเข้าใจสภาพแวดล้อมและเลือกแนวทางให้เหมาะสม</p></div>
+            <div class="mini"><h3>3. องค์กรยุคใหม่ต้องเรียนรู้</h3><p>ความสามารถในการปรับตัวคือปัจจัยสำคัญของความอยู่รอด</p></div>
+          </div>
+          <div class="quote">
+            องค์กรที่พร้อมสำหรับอนาคต คือองค์กรที่เรียนรู้ไว ปรับตัวเร็ว และสร้างคุณค่าได้อย่างต่อเนื่อง
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer">
+      <div>ใช้ปุ่มซ้าย/ขวาบนคีย์บอร์ดเพื่อเปลี่ยนสไลด์</div>
+      <div>
+        <button onclick="prevSlide()">← ก่อนหน้า</button>
+        <button class="secondary" onclick="nextSlide()">ถัดไป →</button>
       </div>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    const currentEl = document.getElementById("current");
+    const totalEl = document.getElementById("total");
+    let current = 0;
+
+    totalEl.textContent = slides.length;
+
+    function showSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= slides.length) index = slides.length - 1;
+      slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+      current = index;
+      currentEl.textContent = current + 1;
+    }
+
+    function nextSlide() {
+      showSlide(current + 1);
+    }
+
+    function prevSlide() {
+      showSlide(current - 1);
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") nextSlide();
+      if (e.key === "ArrowLeft") prevSlide();
+    });
+
+    showSlide(0);
+  </script>
 </body>
 </html>
