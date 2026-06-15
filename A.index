@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</title>
+<style>
+    /* --- DESIGN SYSTEM & RESET --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: 'Sarabun', 'Noto Sans Thai', 'Segoe UI', sans-serif;
+        background-color: #0d1b2a;
+        color: #f8f9fa;
+        overflow: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- SLIDE CONTAINER & SCROLL --- */
+    .slides-container {
+        width: 100vw;
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+
+    /* --- INDIVIDUAL SLIDE STYLE --- */
+    .slide {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        scroll-snap-align: start;
+        padding: 40px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+        border-bottom: 2px solid #415a77;
+    }
+
+    /* --- TYPOGRAPHY --- */
+    h1 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #e0e1dd;
+        border-left: 5px solid #00b4d8;
+        padding-left: 15px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    h2 {
+        font-size: 20px;
+        color: #00b4d8;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    p, li {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #e0e1dd;
+    }
+
+    strong {
+        color: #00b4d8;
+    }
+
+    .citation {
+        font-size: 12px;
+        color: #8d99ae;
+        font-style: italic;
+    }
+
+    /* --- LAYOUTS --- */
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: stretch;
+    }
+
+    .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: #00b4d8;
+    }
+
+    .card-title {
+        font-weight: bold;
+        color: #00b4d8;
+        margin-bottom: 10px;
+        font-size: 17px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 8px;
+    }
+
+    /* --- LISTS --- */
+    ul {
+        list-style-type: none;
+    }
+
+    ul li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    ul li::before {
+        content: "■";
+        position: absolute;
+        left: 0;
+        color: #00b4d8;
+        font-size: 12px;
+        top: 2px;
+    }
+
+    /* --- FOOTER & METADATA --- */
+    .slide-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 15px;
+        font-size: 12px;
+        color: #8d99ae;
+    }
+
+    .slide-number {
+        background: #00b4d8;
+        color: #0d1b2a;
+        padding: 2px 8px;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+
+    /* --- DIAGRAMS & SPECIAL COMPONENTS --- */
+    .vuca-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+
+    .diagram-flow {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 15px;
+    }
+
+    .diagram-step {
+        text-align: center;
+        flex: 1;
+        padding: 10px;
+    }
+
+    .diagram-arrow {
+        color: #00b4d8;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* Table Design */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th {
+        background-color: #415a77;
+        color: #fff;
+        text-align: left;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    td {
+        padding: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 13px;
+    }
+
+    /* DAO Specific Layered Graphic */
+    .dao-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .dao-layer {
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: transform 0.2s;
+    }
+
+    .dao-layer:hover {
+        transform: scale(1.01);
+    }
+
+    .layer-4 { background-color: #00b4d8; color: #0d1b2a; }
+    .layer-3 { background-color: #0077b6; color: #fff; }
+    .layer-2 { background-color: #03045e; color: #fff; border: 1px solid #00df89; }
+    .layer-1 { background-color: #1b263b; color: #e0e1dd; border: 1px dashed #00b4d8; }
+
+    /* Navigation Tip */
+    .nav-tip {
+        position: fixed;
+        bottom: 20px;
+        right: 80px;
+         background: rgba(0, 0, 0, 0.6);
+         color: #fff;
+         padding: 5px 10px;
+         border-radius: 4px;
+         font-size: 11px;
+         z-index: 100;
+         pointer-events: none;
+    }
+</style>
+</head>
+<body>
+
+<div class="nav-tip">ใช้ปุ่มล้อเลื่อนเมาส์หรือทัชแพดเพื่อเลื่อนหน้าสไลด์</div>
+
+<div class="slides-container">
+
+    <!-- SLIDE 1 -->
+    <section class="slide" id="slide1">
+        <div>
+            <h1>01. ภาพรวมและกรอบการวิเคราะห์เชิงทฤษฎี 3 ระดับ</h1>
+            <h2>บทวิเคราะห์ วิจารณ์ และสังเคราะห์ทฤษฎีการบริหารยุคใหม่</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">กรอบการวิเคราะห์แบบ 3 ชั้น (3-Layer Analytical Framework)</div>
+                    <ul>
+                        <li><strong>ชั้นบรรยาย (Descriptive Layer):</strong> ทำความเข้าใจรากฐาน โครงสร้าง และสมมติฐานดั้งเดิมของทฤษฎี</li>
+                        <li><strong>ชั้นวิพากษ์ (Critical Layer):</strong> ประเมินจุดอ่อน ข้อจำกัดทางวัฒนธรรมบริบท และข้อโต้แย้งทางวิชาการ</li>
+                        <li><strong>ชั้นสังเคราะห์ (Synthetic Layer):</strong> เชื่อมโยงและบูรณาการทฤษฎีเข้าสู่บริบทใหม่ที่ซับซ้อน</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title">จุดประสงค์และการเปลี่ยนผ่านกระบวนทัศน์</div>
+                    <ul>
+                        <li>การวิเคราะห์วิวัฒนาการทฤษฎีในลักษณะการเคลื่อนตัวของกระบวนทัศน์ <span class="citation">(Paradigm Shifts - Kuhn, 1962)</span></li>
+                        <li>มุ่งสร้างกรอบการบริหารสังเคราะห์แบบองค์รวมสำหรับการจัดการยุคใหม่</li>
+                        <li>เน้นการประยุกต์ใช้เพื่อวิเคราะห์ข้อจำกัดเฉพาะของระดับองค์กรในแถบภูมิภาคอาเซียน</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>ตาราหลักวิชาการระดับรองศาสตราจารย์ • บทที่ 1</span>
+            <span class="slide-number">1 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 2 -->
+    <section class="slide" id="slide2">
+        <div>
+            <h1>02. ยุคคลาสสิก (1900–1930): อุปมาน "องค์การเสมือนเครื่องจักร" - Taylor</h1>
+            <h2>การจัดการเชิงวิทยาศาสตร์ (Scientific Management) และการลดทอนมิติความเป็นมนุษย์</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">รากฐานเชิงทฤษฎีและข้อสมมติ</div>
+                    <ul>
+                        <li><strong>One Best Way:</strong> วิธีปฏิบัติที่ดีที่สุดเพียงหนึ่งเดียวผ่านการวิเคราะห์ทางวิทยาศาสตร์ <span class="citation">(Taylor, 1911)</span></li>
+                        <li><strong>Economic Man:</strong> สมมติฐานมนุษย์เศรษฐกิจ ขับเคลื่อนด้วยรางวัลทางการเงินเป็นหลัก</li>
+                        <li>การศึกษาเวลาและการเคลื่อนไหว (Time and Motion Study) เพื่อปรับปรุงโครงสร้างการทำงานในอุตสาหกรรม</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title">การวิเคราะห์วิพากษ์ทางวิชาการ</div>
+                    <ul>
+                        <li><strong>Drucker (1999):</strong> แนวคิดนี้ใช้ไม่ได้กับกลุ่มแรงงานความรู้ (Knowledge Workers)</li>
+                        <li><strong>Braverman (1974):</strong> การลดทอนทักษะ (Deskilling) และการถูกแปลกแยกอย่างรุนแรงของแรงงาน</li>
+                        <li><strong>การต่อยอด:</strong> แนวคิดประหยัดแบบลีน (Lean Manufacturing) ร่วมกับการมีส่วนร่วมของผู้ปฏิบัติงาน <span class="citation">(Womack et al., 1990)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</span>
+            <span class="slide-number">2 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 3 -->
+    <section class="slide" id="slide3">
+        <div>
+            <h1>03. ยุคคลาสสิก: มิติบทบาทของ Fayol และระบบราชการของ Weber</h1>
+            <h2>โครงสร้างหน้าที่ที่มีเสถียรภาพ และข้อจำกัดด้านความเฉื่อยของระดับสถาบัน</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">เสาหลักโครงสร้างองค์การระดับสถาบัน</div>
+                    <ul>
+                        <li><strong>Fayol (14 Principles):</strong> ลำดับขั้นการบังคับบัญชา และการแบ่งงานกันทำตามความเชี่ยวชาญ</li>
+                        <li><strong>Weber (Bureaucratic Model):</strong> ความสมเหตุสมผลตามกฎหมาย หลักความเป็นกลางและความเป็นทางการ</li>
+                        <li><strong>ผลลัพธ์เชิงพัฒนา:</strong> สร้างเสถียรภาพ ความเป็นระบบ และการคาดเดาผลสัมฤทธิ์ได้สูง</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title">มิติมุมมองทางเลือกและข้อวิพากษ์</div>
+                    <ul>
+                        <li><strong>Mintzberg (1973):</strong> ผู้บริหารจริงตัดสินใจอย่างกระจัดกระจาย ไม่ใช่ตามกระบวนการวางแผนที่เป็นระบบระเบียบ</li>
+                        <li><strong>DiMaggio & Powell (1983):</strong> แรงกดดันจากสถาบันทำให้องค์การมีโครงสร้างที่เหมือนๆ กัน (Isomorphism)</li>
+                        <li><strong>Hannan & Freeman (1984):</strong> โครงสร้างที่แข็งเกินไปก่อให้เกิด "ความเฉื่อยทางโครงสร้าง" (Structural Inertia)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</span>
+            <span class="slide-number">3 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 4 -->
+    <section class="slide" id="slide4">
+        <div>
+            <h1>04. ยุคแรงงานสัมพันธ์ (1930–1960): อุปมาน "องค์การเสมือนสิ่งมีชีวิต"</h1>
+            <h2>การค้นพบมิติสังคมมนุษย์ในองค์การและการสั่นคลอนสมมติฐานสากลนิยม</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">รากฐานแนวคิด (Human Relations)</div>
+                    <ul>
+                        <li><strong>Hawthorne Studies (Mayo):</strong> ปัจจัยทางสังคมและกลุ่มมีความสำคัญเหนือเงื่อนไขทางกายภาพ</li>
+                        <li><strong>Maslow (1943):</strong> ลำดับขั้นความต้องการ และ McGregor (1960) ทฤษฎี X และ Y</li>
+                        <li><strong>Herzberg (1959):</strong> ปัจจัยจูงใจ (Motivator) และปัจจัยค้ำจุน (Hygiene factors)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title">การวิเคราะห์วิพากษ์</div>
+                    <ul>
+                        <li><strong>Levitt & List (2011):</strong> สัญญาณสะท้อน "Hawthorne effect" มีระดับต่ำกว่าที่เคยรายงานและถูกขยายความเกินจริง</li>
+                        <li><strong>Hofstede (1984):</strong> ลำดับขั้นความต้องการอิงกลุ่มวัฒนธรรมตะวันตก (ในเอเชียเน้นความผูกพันกลุ่มก่อนความภูมิใจในตนเอง)</li>
+                        <li><strong>วิเคราะห์สังเคราะห์:</strong> เปลี่ยนทัศนะสู่ระบบสังคมแบบเปิด แต่ยังมีอคติสมมติฐานสากลนิยม (Universalist Assumption)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</span>
+            <span class="slide-number">4 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 5 -->
+    <section class="slide" id="slide5">
+        <div>
+            <h1>05. ยุคการจัดการสมัยใหม่ (1960–2000): ทฤษฎีระบบเปิดและทฤษฎีตามสถานการณ์</h1>
+            <h2>การปรับตัวโครงสร้างองค์การเพื่อความสอดประสานกับสภาพแวดล้อมภายนอก</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">ทฤษฎีระบบแบบเปิด (Open Systems Theory)</div>
+                    <p>องค์การคือระบบเปิดที่สร้างผลสำเร็จโดยแลกเปลี่ยนทรัพยากร พลังงาน และข้อมูลข่าวสารกับภายนอกอย่างต่อเนื่อง <span class="citation">(Katz & Kahn, 1966)</span></p>
+                    <div class="diagram-flow">
+                        <div class="diagram-step"><strong>ระบบภายนอก</strong>
+<small>(Environment)</small></div>
+                        <div class="diagram-arrow">➔</div>
+                        <div class="diagram-step"><strong>โครงสร้างภายใน</strong>
+<small>(Structure)</small></div>
+                        <div class="diagram-arrow">➔</div>
+                        <div class="diagram-step"><strong>ผลลัพธ์ประสิทธิภาพ</strong>
+<small>(Performance)</small></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">ทฤษฎีตามสถานการณ์ (Contingency Theory)</div>
+                    <ul>
+                        <li>ไม่มีสูตรบริหารที่ดีที่สุดเพียงสูตรเดียว <span class="citation">(Burns & Stalker, 1961)</span></li>
+                        <li>การประสานสภาพแวดล้อมภายนอก (Environmental Turbulence) ร่วมกับรูปแบบองค์การเชิงกลไกหรือเชิงอินทรีย์ <span class="citation">(Lawrence & Lorsch, 1967)</span></li>
+                        <li><strong>หัวใจสำคัญ:</strong> ความลงตัวเชิงกลยุทธ์ (Strategic Fit)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</span>
+            <span class="slide-number">5 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 6 -->
+    <section class="slide" id="slide6">
+        <div>
+            <h1>06. ทฤษฎีฐานทรัพยากรและความสามารถทางการปรับเปลี่ยนเชิงพลวัต</h1>
+            <h2>ข้อดีของการสร้างความได้เปรียบภายในองค์กรและข้อจำกัดของทฤษฎีเชิงประจักษ์</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">กลไกทรัพยากรและความสามารถขยายตัว</div>
+                    <ul>
+                        <li><strong>Resource-Based View (RBV):</strong> ความได้เปรียบจากการครองทรัพยากรที่มีลักษณะ VRIN <span class="citation">(Penrose, 1959; Barney, 1991)</span></li>
+                        <li><strong>Dynamic Capabilities:</strong> ความสามารถเชิงพลวัตในการรับรู้คว้าโอกาสและปรับเปลี่ยน <span class="citation">(Teece, Pisano & Shuen, 1997)</span></li>
+                        <li>มุ่งแปรเปลี่ยนกระบวนทัศน์จากการปกป้องทรัพยากรเดิม สู่ความยืดหยุ่นในการจัดกลุ่มทรัพยากรใหม่</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title">ข้อวิจารณ์เชิงทฤษฎีเชิงลึก</div>
+                    <ul>
+                        <li><strong>Priem & Butler (2001):</strong> คำนิยามของ RBV มีความย้อนแย้งในตัวเองในเชิงตรรกะเหตุผล (Tautological)</li>
+                        <li><strong>Porter (1980):</strong> ทฤษฎีละเลยอิทธิพลและหน้าตาของกลุ่มพลังการตลาดภายนอก</li>
+                        <li><strong>Eisenhardt & Martin (2000):</strong> รูปแบบกระบวนการความสามารถทางพลวัตยืดหยุ่นไม่มีคุณลักษณะที่เลียนแบบไม่ได้ในระยะยาว</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</span>
+            <span class="slide-number">6 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 7 -->
+    <section class="slide" id="slide7">
+        <div>
+            <h1>07. องค์การแห่งการเรียนรู้ (Learning Organization)</h1>
+            <h2>การเปลี่ยนกกระบวนทัศน์สู่ความเป็นระบบคิดที่ปลอดภัยและยืดหยุ่นต่อปัญหาซับซ้อน</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-title">ลูปการเรียนรู้ (Learning Loops)</div>
+                    <p><strong>Argyris & Schön (1978):</strong></p>
+                    <ul>
+                        <li>Single-Loop Learning: การแก้ไขปัญหาเฉพาะหน้า</li>
+                        <li>Double-Loop Learning: การตั้งคำถามลึกซึ้งถึงบรรทัดฐานและข้อสมมติเบื้องหลัง</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title">ระบบคิดสมบูรณ์ (Systems Thinking)</div>
+                    <p><strong>Senge (1990):</strong></p>
+                    <p>วินัย 5 ประการโดยมีวิสัยทัศน์เชิงระบบบูรณาการร่วมกัน และมิติความปลอดภัยทางจิตวิทยา <span class="citation">(Psychological Safety - Edmondson, 1999)</span> เพื่อขับเคลื่อนการเติบโตของทีมงาน</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">มิติการวิพากษ์</div>
+                    <p><strong>Weick & Westley (1996):</strong> คำนิยามอุดมคติเกินจริง ขาดเครื่องมือเชิงระบบเพื่อปฏิบัติตามสถานการณ์จริง</p>
+                    <p><strong>Argyris (1991):</strong> วัฒนธรรมผู้บริหารมักแสดงออกอย่างต่อต้านการเรียนรู้ในระดับ Double-Loop</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</span>
+            <span class="slide-number">7 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 8 -->
+    <section class="slide" id="slide8">
+        <div>
+            <h1>08. สมัยร่วมสมัย (2000–ปัจจุบัน): ความซับซ้อนและการแสวงหาความสมดุล</h1>
+            <h2>การรับมือภัยคุกคามทางเทคโนโลยีและการจัดการความย้อนแย้งเชิงกลยุทธ์</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-title">ความสมดุลและความเป็นเลิศคู่ขนาน</div>
+                    <p><strong>March (1991); Tushman & O'Reilly (1996):</strong></p>
+                    <p>Ambidextrous Organization หมายถึงความสามารถร่วมในการตักตวงผลประโยชน์จากฐานทรัพยากรเดิม (Exploitation) พร้อมกับการมองหาโอกาสเชิงอนาคตใหม่ (Exploration)</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">นวัตกรรมพลิกโลก (Disruption)</div>
+                    <p><strong>Christensen (1997):</strong></p>
+                    <p>ความล้มเหลวของผู้ประกอบการระดับผู้นำอุตสาหกรรมเดิมที่เกิดขึ้นจากการใส่ใจแต่กลุ่มลูกค้าเดิมจนละเลยกลุ่มลูกค้ารายย่อยและพื้นที่ตลาดกลุ่มใหม่</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">ความท้าทายเชิงร่วมสมัย</div>
+                    <p><strong>Sull (1999):</strong> กับดักความสำเร็จเดิม (Competency Trap) นำไปสู่ความล้มเหลวในการปรับโครงสร้างเสี่ยงขององค์กร</p>
+                    <p><strong>Kane et al. (2019):</strong> ความเป็นเลิศทางเทคโนโลยี ดิจิทัลต้องริเริ่มขับเคลื่อนผ่านโครงสร้างสังคมวัฒนธรรมแนวคิดที่เปิดรับความเสี่ยง</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</span>
+            <span class="slide-number">8 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 9 -->
+    <section class="slide" id="slide9">
+        <div>
+            <h1>09. จาก VUCA สู่ BANI: กรอบการวินิจฉัยสภาพแวดล้อมเชิงลึก</h1>
+            <h2>การปรับทัศนคติการจัดการภายหลังวิกฤติการณ์เชิงระบบระดับโลก</h2>
+            <div class="vuca-grid">
+                <div class="card">
+                    <div class="card-title" style="color:#e63946">Brittle (เปราะบาง)</div>
+                    <p>โครงสร้างความสำเร็จเดิมอาจพังทลายอย่างง่ายดายในชั่วข้ามคืน</p>
+                </div>
+                <div class="card">
+                    <div class="card-title" style="color:#f1faee">Anxious (วิตกกังวล)</div>
+                    <p>สภาวะความกดดันและไร้หนทางการตัดสินใจที่สมบูรณ์แบบ</p>
+                </div>
+                <div class="card">
+                    <div class="card-title" style="color:#a8dadc">Nonlinear (ไม่เป็นเส้นตรง)</div>
+                    <p>เหตุและผลลัพธ์ไม่สมส่วน การเปลี่ยนแปลงขนาดเล็กส่งผลกระทบมหาศาล</p>
+                </div>
+                <div class="card">
+                    <div class="card-title" style="color:#457b9d">Incomprehensible (เกินเข้าใจ)</div>
+                    <p>ข้อมูลข่าวสารล้นแต่ขาดเบาะแสความเข้าใจที่เป็นแก่นสาร</p>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 15px;">
+                <div class="card-title">การวิเคราะห์วิพากษ์และการใช้ประโยชน์ร่วมเชิงระบบ</div>
+                <p>กรอบทั้งสองมีส่วนช่วยเป็นเลนส์สะท้อนภาพเท่านั้น แต่ไม่ใช่เข็มทิศชี้แนะแก้ปัญหาเชิงรุกและสุ่มเสี่ยงทำให้องค์การตกอยู่ในสภาวะตื่นกลัว (Organizational Anxiety)</p>
+                <p><strong>การสังเคราะห์:</strong> บูรณาการคุณค่าร่วมกับโมเดลการประเมินทางเลือกแบบ <strong>Cynefin Framework</strong> <span class="citation">(Snowden & Boone, 2007)</span> เพื่อจำแนกประเภทเขตสภาวะความวุ่นวายซับซ้อนสลับซ้อนได้อย่างมีกลยุทธ์ตามหน้าที่จริง</p>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</span>
+            <span class="slide-number">9 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 10 -->
+    <section class="slide" id="slide10">
+        <div>
+            <h1>10. อภิวัฒน์อุตสาหกรรมครั้งที่ 4 (IR 4.0): ภาพสะท้อนของผลลัพธ์หรือกระแสสังคม</h1>
+            <h2>การประเมินวิพากษ์เปรียบเทียบประโยชน์เชิงความสามารถทางการมีจุดเด่นทางองค์กร</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">มุมมองวิวัฒนาการเชิงบวก</div>
+                    <ul>
+                        <li><strong>Schwab (2016):</strong> แพลตฟอร์มการสังเคราะห์ทางวัตถุภาพ ดิจิทัล ชีวภาพอย่างไร้รอยต่อ ก่อระบบคลื่นลูกใหม่ที่มีอิทธิพลรุนแรง</li>
+                        <li>มุ่งมั่นสร้างกระบวนการดำเนินงานทำงานที่เชื่อมต่อ ยืดหยุ่นตอบรับพฤติกรรมความเร่งด่วนเฉพาะของตัวบุคคล</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title">มุมมองโต้แย้งและวิพากษ์</div>
+                    <ul>
+                        <li><strong>Gordon (2016):</strong> แพลตฟอร์มการปฏิวัติยุคดิจิทัลไม่สร้างผลิตภาพที่แท้จริงในเชิงเศรษฐกิจได้เท่ากับระบบคลื่นลูกที่สอง (ไฟฟ้า, ท่อประปา, ยานยนต์)</li>
+                        <li>การใส่กระแสเทคโนโลยีโดยขาดระบบการเรียนรู้และวางขั้นตอนโครงสร้างบุคลากรนำไปสู่ประเด็นความสูญเสียในระดับทุน <span class="citation">(Kane et al., 2019)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</span>
+            <span class="slide-number">10 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 11 -->
+    <section class="slide" id="slide11">
+        <div>
+            <h1>11. สังเคราะห์: รูปแบบวิวัฒนาการหลักทางทฤษฎี (4 Evolution Patterns)</h1>
+            <h2>ตารางเปรียบเทียบแนวโน้มพฤติกรรมการจัดการจากกระบวนทัศน์คลาสสิกสู่ร่วมสมัย</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>มิติการวิเคราะห์</th>
+                        <th>ยุคเริ่มแรก (Classical Era)</th>
+                        <th>ยุคเปลี่ยนผ่าน (Systemic/Dynamic Era)</th>
+                        <th>ยุคร่วมสมัยปัจจุบัน (Contemporary Era)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>มิติหลักมุมมองโครงสร้าง</strong></td>
+                        <td>ระบบปิด ค้นหาความสมบูรณ์แบบสูงสุดประเด็นเดียว (One Best Way)</td>
+                        <td>ระบบเปิดตามพฤติกรรมปรับเปลี่ยนพึ่งสถานการณ์ (Strategic Fit)</td>
+                        <td>ระบบนิเวศความซับซ้อน ปรับยืดหยุ่นตามธรรมชาติวิถีธรรมชาติ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>แนวปฏิบัติตามเป้าหมาย</strong></td>
+                        <td>มิติผลลัพธ์มุ่งประสิทธิภาพการดำเนินงานและการควบควบคุมระบบสูงสุด</td>
+                        <td>ความได้เปรียบโดยอาศัยข้อเด่นความเร็วและการจัดหาฐานทรัพยากร</td>
+                        <td>ความยั่งยืนสอดประสานค่านิยมและทัศนะร่วมของผู้มีส่วนร่วม</td>
+                    </tr>
+                    <tr>
+                        <td><strong>พฤติกรรมทรัพยากรระดับบุคคล</strong></td>
+                        <td>มนุษย์มีลักษณะเป็นกลไกควบคุมเชิงปัจจัยวัตถุทำงานเป็นเส้นตรง</td>
+                        <td>มีความตระหนัก รู้จักพึ่งความพึงพอใจและปัจจัยขับเคลื่อนเชิงสังคม</td>
+                        <td>มีอิสระความพร้อม การมีเป้าหมายชีวิตบูรณาการเป้าหมายทัศนคติ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</span>
+            <span class="slide-number">11 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 12 -->
+    <section class="slide" id="slide12">
+        <div>
+            <h1>12. สู่ต้นแบบกรอบงาน DAO (Dynamic Adaptive Organization Framework)</h1>
+            <h2>หลักการคิดเชิงปรัชญาสังเคราะห์การบริหารแบบบูรณาการหลากมิติ</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">ความจำเป็นในการสร้างกรอบสังเคราะห์ใหม่</div>
+                    <p>กรอบ DAO Framework จัดทำขึ้นเพื่อเป็นแผนผังทางเลือกประเมินวินิจฉัยเชิงกลยุทธ์ ไม่ใช่หลักการสร้างทัศนคติทั่วไปที่ละทิ้งคุณประโยชน์ในทฤษฎีดั้งเดิมที่ผ่านมา</p>
+                    <p>แก่นการสร้างมติคือการสร้างลูปสะท้อนความคิดความสัมพันธ์ขององค์ประกอบต่างๆ ที่มีผลเชื่อมโยงระหว่างกัน <span class="citation">(Senge, 1990; Meadows, 2008)</span></p>
+                </div>
+                <div class="card">
+                    <div class="card-title">หลักคิดเชิงกลศาสตราจารย์ (3 Design Principles)</div>
+                    <ul>
+                        <li><strong>ความครอบคลุมระบบ (Comprehensiveness):</strong> นำเอามิติเป้าหมาย ตัวตน ทรัพยากรชั้นใน สู่สภาพแวดล้อมกระจัดกระจายหลอมรวมกัน</li>
+                        <li><strong>ความเป็นพลวัตย้อนแย้ง (Dynamic Interplay):</strong> การไหลข้อมูลลูปย้อนกลับ</li>
+                        <li><strong>สามารถปรับสภาพจำเพาะ (Adaptability):</strong> ใช้ตรวจสอบค้นหาจุดอ่อนสะพานของระบบในระดับองค์กรได้ทุกประเภทภารกิจ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่ • สถาปัตยกรรมกรอบสังเคราะห์</span>
+            <span class="slide-number">12 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 13 -->
+    <section class="slide" id="slide13">
+        <div>
+            <h1>13. รายละเอียดสถาปัตยกรรมสี่ระดับชั้น (Four Layers of DAO)</h1>
+            <h2>กลไกการเคลื่อนไหลประสานภายในเพื่อความสมบูรณ์วิถีของการวิวัฒน์ระบบองค์กร</h2>
+            <div class="dao-container">
+                <div class="dao-layer layer-4">
+                    <span>ระดับชั้นที่ 4: เจตจำนง ค่านิยมและอัตลักษณ์ (Purpose & Values Layer)</span>
+                    <small>ทฤษฎีเป้าหมายความหมายของชีวิตและกลุ่มผู้มีส่วนได้ส่วนเสีย [Sinek; Freeman]</small>
+                </div>
+                <div class="dao-layer layer-3">
+                    <span>ระดับชั้นที่ 3: บทบาทและกลไกความคล่องตัวปรับตัว (Adaptation Mechanism Layer)</span>
+                    <small>โครงสร้างองค์การแบบสองแฝด ลูปทวินและทักษะความว่องไวข้ามพรมแดน [March; Snowden]</small>
+                </div>
+                <div class="dao-layer layer-2">
+                    <span>ระดับชั้นที่ 2: ความสามารถเชิงพลวัตและคลังทรัพยากร (Resource & Capability Layer)</span>
+                    <small>ฐานทรัพยากร VRIN และนวัตกรรมพลวัตเพื่อสแกนและสลับหน้าดินทรัพยากร [Barney; Teece]</small>
+                </div>
+                <div class="dao-layer layer-1">
+                    <span>ระดับชั้นที่ 1: ระบบจับกระแสตรวจจับสัญญานแวดล้อม (Environmental Sensing Layer)</span>
+                    <small>เรดาร์กรวดจับสัญญาณทัศนะเสี่ยงระบบแบบไม่มีขอบเขตกระจายเด่น [Bennett; Cascio]</small>
+                </div>
+            </div>
+            <p style="margin-top:15px; font-size:13px; text-align:center;">
+                * การสอดประสานองค์ประกอบกลยุทธ์ทั้งสี่ทิศทางอย่างลงตัว ส่งผลต่อความก้าวหน้าและการรอดชีวิตองค์กรในระยะยาวอย่างมั่นคงสูงสุด <span class="citation">(Evolutionary Fitness - Helfat, 2007)</span>
+            </p>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่ • สถาปัตยกรรมกรอบสังเคราะห์</span>
+            <span class="slide-number">13 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 14 -->
+    <section class="slide" id="slide14">
+        <div>
+            <h1>14. ขอบเขตงานวิจัยอนาคตและการประยุกต์สำหรับบริบทธุรกิจไทยและอาเซียน</h1>
+            <h2>การปรับปรุงจุดจำกัดเชิงโครงสร้างสู่วิถีสะพานอุตสาหกรรมในศตวรรษที่ 21</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-title">แนวทางพัฒนาและวิจัยเชิงวิชาการ</div>
+                    <p>สร้างเครื่องวัดความเปราะปรานของระบบพัฒนาทุติยภูมิในภาคระบบการทำวิจัยเชิงประจักษ์ และทดสอบความสัมพันธ์ของชั้นภูมิผลลัพธ์ของโมเดล DAO ภายใต้ขนาดและอุตสาหกรรมที่หลากหลาย</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">ประเด็นท้าทายระดับชาติ/ภูมิภาค</div>
+                    <ul>
+                        <li><strong>กับดักรายได้ปานกลาง:</strong> ความจำเป็นต้องก้าวผ่านข้อจำกัดจากการเป็นแรงงานราคาถูกสู่การใช้ทักษะ Dynamic Capabilities <span class="citation">(World Bank, 2020)</span></li>
+                        <li><strong>มิติวรรณะความแตกต่างเชิงอำนาจ (High Power Distance):</strong> ความเกรงใจสามารถขัดแย้งการประยุกต์ใช้โมเดลแบ่งงานกระจายอำนาจข้ามสายงาน</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title">โครงสร้างองค์การครอบครัวและข้อจำกัด</div>
+                    <p>การผสมผสานจุดแข็งจากค่านิยมความไว้วางใจข้ามเจเนอเรชั่น ร่วมกับข้อจำกัดความเสี่ยงของการส่งผ่านทายาทและจุดยืนความโปร่งใสธรรมาภิบาล <span class="citation">(Kets de Vries, 2007)</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>แนวคิดและทฤษฎีการบริหารธุรกิจองค์กรยุคใหม่</span>
+            <span class="slide-number">14 / 15</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 15 -->
+    <section class="slide" id="slide15">
+        <div>
+            <h1>15. บทสรุปภาพรวมและประเด็นอภิปรายเชิงวิเคราะห์ชวนคิด</h1>
+            <h2>สาระบทความแก่นแท้และการระดมสมองกระตุ้นมิติความรู้เชิงชั้นเรียนปริญญาเอกและโท</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">ประเด็นแก่นสาระบทสรุป</div>
+                    <p>ทฤษฎีทางการจัดสรรการจัดการไม่มีสภาพการถูกสลัดทิ้งหรือทำลายเมื่อเกิดทฤษฎีใหม่ แต่เปรียบเสมือนการเติมต่อพื้นที่อัปเกรดมุมมองในฐานลึกซึ้งยิ่งขึ้น</p>
+                    <p><strong>ข้อเสนอแนะหลักของบทเรียน:</strong> การเอาชีวิตรอดของขีดจำกัดยุคใหม่คือการสกลายปรับสมดุลพึ่งพาทั้ง 4 ชั้นภายใต้กรอบการสังเคราะห์ DAO ให้อยู่ร่วมกันเป็นวิถีทางกายภาพเดียวกัน</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">โจทย์อภิปรายเพื่อสร้างการถกเถียงเชิงวิชาการ (Selected Questions)</div>
+                    <ol style="padding-left:15px; color:#e0e1dd; font-size:13px; line-height:1.5;">
+                        <li style="margin-bottom:8px;">หากยอมรับว่าสมมติฐาน "คนทำงานขับเคลื่อนด้วยเงินเป็นหลัก" ของ Taylor นั้นผิดพลาดในการทำงานยุคสารสนเทศ แนวคิดของเขาในมิติใดยังครองคุณประโยชน์ในการมองโลกและพัฒนาวิถีความปลอดภัยให้กับการจัดการความรู้ได้บ้าง?</li>
+                        <li style="margin-bottom:8px;">จากข้อวิจารณ์ของ Priem & Butler (2001) ที่ประเมินว่าทฤษฎีฐานทรัพยากรเป็นเงื่อนไขที่ "นิยามย้อนแย้งในเชิงผลลัพธ์ความเป็นไปได้" ในห้วงเวลาปัจจุบันที่เกิดวิกฤติตามสถานการณ์บ่อยครั้ง ทฤษฎีความสามารถทางพลวัตหรือแนวคิดยืดหยุ่นเชิงสตาร์ทอัพฝ่ายใดตอบโจทย์เชิงประจักษ์ได้ชัดเจนกว่า?</li>
+                        <li>หากเทคโนโลยี AI ขยายขีดระดับความสามารถตัดสินใจแบบคู่ขนานแทนบทบาทผู้บริหารยุคเก่า กรอบความพึงพอใจและการรับรู้ระบบแบบลูปสองชั้นของ Senge จะเกิดความเปราะบางหรือเปลี่ยนผ่านไปสู่กระบวนทัศน์ขั้นใดในเชิงวิชาการ?</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>บทต่อไป: การประยุกต์ใช้กรอบ DAO สู่บทบาทผู้นำการเปลี่ยนแปลงเชิงกลยุทธ์</span>
+            <span class="slide-number">15 / 15</span>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
